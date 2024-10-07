@@ -6,14 +6,13 @@ A3_incubation_prop_infectious <- user(0.1, min = 0.01, max = 0.99)
 A4_prop_symptomatic <- user(0.7, min = 0, max = 1)  # Probability of developing symptoms
 A5_symptomatic_days <- user(7, min = 0)
 
-A6_IFR_age_under_18 <- user(0.01, min = 0, max = 0.2) # capped at HFR 
-A7_IFR_age_18_65 <- user(0.01, min = 0, max = 0.2) # capped at HFR
-A8_IFR_age_over_65 <- user(0.01, min = 0, max = 0.2) # capped at HFR
+A6_IFR_age_under_18 <- user(0.0001, min = 0, max = 0.2) # capped at HFR 
+A7_IFR_age_18_65 <- user(0.001, min = 0, max = 0.2) # capped at HFR
+A8_IFR_age_over_65 <- user(0.05, min = 0, max = 0.2) # capped at HFR
 
-
-B0_npi_delay_after_first_hospitalisation <- user(7, min = 0)
 
 # User-defined NPI parameters 
+B0_npi_delay_after_first_hospitalisation <- user(14, min = 0)
 
 # NPI parameters for transmission reductions (default is 0, meaning no reduction)
 B1_reduction_in_contacts_universal <- user(0, min = 0, max = 1)  # NPI efficacy for retired-age
