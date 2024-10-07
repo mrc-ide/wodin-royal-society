@@ -15,7 +15,7 @@ A8_IFR_age_over_65 <- user(0.05, min = 0, max = 0.2) # capped at HFR
 B0_npi_delay_after_first_hospitalisation <- user(14, min = 0)
 
 # NPI parameters for transmission reductions (default is 0, meaning no reduction)
-B1_reduction_in_contacts_universal <- user(0, min = 0, max = 1)  # NPI efficacy for retired-age
+B1_reduction_in_transmission_among_contacts <- user(0, min = 0, max = 1)
 B2a_reduction_in_contacts_under_18 <- user(0, min = 0, max = 1)  # NPI efficacy for school-age
 B2b_reduction_in_contacts_18_65 <- user(0, min = 0, max = 1)  # NPI efficacy for working-age
 B2c_reduction_in_contacts_over_65 <- user(0, min = 0, max = 1)  # NPI efficacy for retired-age
@@ -31,6 +31,10 @@ B4_reduction_in_importations <- user(0, min = 0, max = 1)  # NPI efficacy for re
 # Convert user params to model params
 p_S <- A4_prop_symptomatic
 p_I_E <- min(A3_incubation_prop_infectious, 0.9999)
+npi_t <- B1_reduction_in_transmission_among_contacts
+npi_c01 <- B2a_reduction_in_contacts_under_18
+npi_c02 <-B2b_reduction_in_contacts_18_65
+npi_c03 <- B2c_reduction_in_contacts_over_65
 
 
 # Infection progression (IHR is the probability of going to the severe compartment I_H)
@@ -44,10 +48,6 @@ HFR <- 0.2  # 20% of those hospitalised die - medical care
 IHR01 <- IFR01 / HFR  # Infection Hospitalisation Rate for age group 01
 IHR02 <- IFR02 / HFR  # Infection Hospitalisation Rate for age group 02
 IHR03 <- IFR03 / HFR  # Infection Hospitalisation Rate for age group 03
-
-## If we assume an IFR = D/I by age and a fixed HFR = D/H then we calculate
-# assume HFR = 20%
-# IHR = H / I = IFR / HFR
 
 
 
@@ -91,10 +91,12 @@ I02 <- I_E02 + I_M02 * npi_symptoms + I_H02 + I_A02 + T02 * npi_testing
 I03 <- I_E03 + I_M03 * npi_symptoms + I_H03 + I_A03 + T03 * npi_testing
 I_total <- I01 + I02 + I03
 
+
+
 # Apply NPIs based on the time
-npi_transmission01 <- if (t < t_npi) 1 else 1 - max(B1_reduction_in_contacts_universal, B2a_reduction_in_contacts_under_18)
-npi_transmission02 <- if (t < t_npi) 1 else 1 - max(B1_reduction_in_contacts_universal, B2b_reduction_in_contacts_18_65)
-npi_transmission03 <- if (t < t_npi) 1 else 1 - max(B1_reduction_in_contacts_universal, B2c_reduction_in_contacts_over_65)
+npi_transmission01 <- if (t < t_npi) 1 else 1 - (npi_c01 + (1 - npi_c01) * npi_t)
+npi_transmission02 <- if (t < t_npi) 1 else 1 - (npi_c02 + (1 - npi_c02) * npi_t)
+npi_transmission03 <- if (t < t_npi) 1 else 1 - (npi_c03 + (1 - npi_c03) * npi_t)
 npi_symptoms <- if (t < t_npi) 1 else 1 - B3a_proportion_isolating_after_symptoms   # Reduction in infectiousness after symptoms
 npi_testing  <- if (t < t_npi) 1 else 1 - B3b_proportion_isolating_after_testing_positive   # Reduction in infectiousness after testing
 
