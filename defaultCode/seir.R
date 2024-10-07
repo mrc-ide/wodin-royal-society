@@ -1,5 +1,78 @@
+## User inputs disease
+R0 <- user(2.5, min = 0)  # Basic reproduction number (R0)
+incubation_days <- user(3, min = 0) # Incubation period in days
+incubation_prop_infectious <- user(0.1, min = 0.01, max = 0.99)
+symptomatic_days <- user(7, min = 0)
+prop_symptomatic <- user(0.7, min = 0, max = 1)  # Probability of developing symptoms
+IFR_children <- user(0.01, min = 0, max = 0.2) # capped at HFR 
+IFR_adults <- user(0.01, min = 0, max = 0.2) # capped at HFR
+IFR_elderly <- user(0.01, min = 0, max = 0.2) # capped at HFR
+
+
+npi_delay <- user(7, min = 0)
+importations_per_day <- user(10, min = 0) # Constant total importation rate across all groups
+
+# User-defined NPI parameters 
+
+# NPI parameters for transmission reductions (default is 0, meaning no reduction)
+npi_efficacy_school <- user(0, min = 0, max = 1)  # NPI efficacy for school-age
+npi_efficacy_working <- user(0, min = 0, max = 1)  # NPI efficacy for working-age
+npi_efficacy_retired <- user(0, min = 0, max = 1)  # NPI efficacy for retired-age
+npi_efficacy_total <- user(0, min = 0, max = 1)  # NPI efficacy for retired-age
+
+# NPI parameters for isolation and testing reductions (set to 0 by default)
+npi_efficacy_isolation_symptoms <- user(0, min = 0, max = 1)  # Reduction in infectiousness after symptoms
+npi_efficacy_isolation_testing <- 0  # Reduction in infectiousness after testing - not currently used
+
+# NPI parameters for importation (set to 0 by default)
+npi_efficacy_importation <- user(0, min = 0, max = 1)  # NPI efficacy for reducing importations
+
+
+# Convert user params to model params
+p_S <- prop_symptomatic
+p_I_E <- min(incubation_prop_infectious, 0.9999)
+
+
+# Infection progression (IHR is the probability of going to the severe compartment I_H)
+
+IFR01 <- IFR_children
+IFR02 <- IFR_adults
+IFR03 <- IFR_elderly
+
+HFR <- 0.2  # 20% of those hospitalised die - medical care
+
+IHR01 <- IFR01 / HFR  # Infection Hospitalisation Rate for age group 01
+IHR02 <- IFR02 / HFR  # Infection Hospitalisation Rate for age group 02
+IHR03 <- IFR03 / HFR  # Infection Hospitalisation Rate for age group 03
+
+## If we assume an IFR = D/I by age and a fixed HFR = D/H then we calculate
+# assume HFR = 20%
+# IHR = H / I = IFR / HFR
+
+
+
+
+# Compartment-specific durations calculated from durations
+dur_E <- (1 - p_I_E) * incubation_days # duration in E compartment
+dur_I_E <- incubation_days - dur_E
+dur_I_A <- symptomatic_days  # assume same as symptoms
+dur_I_M <- symptomatic_days  # assume same as symptoms
+dur_I_H <- symptomatic_days  # assume same as symptoms
+dur_H <- 14  # duration in H compartment (hospitalized) - assume 2 weeks
+dur_T <- symptomatic_days  # Duration in T compartment (tested)
+
+t_npi <- dur_I_E + dur_E + dur_I_H + npi_delay
+
+rate_E <- 1 / dur_E  # Rate out of non-infectious exposed compartment
+rate_I_E <- 1 / dur_I_E  # Rate out of presymptomatic infectious compartment
+rate_I_A <- 1 / dur_I_A  # rate from I_A to R (recovery for asymptomatic)
+rate_I_M <- 1 / dur_I_M  # rate from I_M to R
+rate_I_H <- 1 / dur_I_H  # rate from I_H to H
+rate_H <- 1 / dur_H  # rate from H to R/D
+rate_T <- 1 / dur_T  # rate from T to R (for tested individuals)
+
 # Define the total UK population size
-N <- user(69e6, min = 0)  # Approximate total UK population (69 million)
+N <- 69e6  # Approximate total UK population (69 million)
 
 # Proportion of population in each age group (approximate)
 school_age_proportion <- 0.23  # School-age (0-19 years)
@@ -11,170 +84,147 @@ N01 <- N * school_age_proportion  # School-age population
 N02 <- N * working_age_proportion  # Working-age population
 N03 <- N * retired_age_proportion  # Retired-age population
 
-# Proportion of infectious individuals in each age group with isolation NPI applied to I and T
-C01 <- A01 + I01 * npi_isolation_symptoms + T01 * npi_isolation_testing + M01
-C02 <- A02 + I02 * npi_isolation_symptoms + T02 * npi_isolation_testing + M02
-C03 <- A03 + I03 * npi_isolation_symptoms + T03 * npi_isolation_testing + M03
 
-# Homogeneous mixing assumption for total force of infection
-C_total <- (C01 + C02 + C03) / N
-
-# User-defined NPI parameters
-t_npi <- user(30, min = 0)  # time when NPIs come into effect
-npi_transmission_school_effect <- user(0, min = 0, max = 1)
-npi_transmission_working_effect <- user(0, min = 0, max = 1)
-npi_transmission_retired_effect <- user(0, min = 0, max = 1)
-npi_transmission_total_effect <- user(0, min = 0, max = 1)
-npi_isolation_symptoms_effect <- user(0, min = 0, max = 1)  # Reduction in infectiousness after symptoms
-npi_isolation_testing_effect <- user(0, min = 0, max = 1)  # Reduction in infectiousness after testing
-npi_importations_effect <- user(0, min = 0, max = 1)  # Reduction in importations after NPIs
-
-importations_user <- user(10, min = 0)  # Constant number of importations per day among adults
+# Total force of infection from all compartments
+I01 <- I_E01 + I_M01 * npi_symptoms + I_H01 + I_A01 + T01 * npi_testing
+I02 <- I_E02 + I_M02 * npi_symptoms + I_H02 + I_A02 + T02 * npi_testing
+I03 <- I_E03 + I_M03 * npi_symptoms + I_H03 + I_A03 + T03 * npi_testing
+I_total <- I01 + I02 + I03
 
 # Apply NPIs based on the time
-npi_transmission01 <- if (t < t_npi) 1 else 1 - max(npi_transmission_total_effect, npi_transmission_school_effect)
-npi_transmission02 <- if (t < t_npi) 1 else 1 - max(npi_transmission_total_effect, npi_transmission_working_effect)
-npi_transmission03 <- if (t < t_npi) 1 else 1 - max(npi_transmission_total_effect, npi_transmission_retired_effect)
-npi_isolation_symptoms <- if (t < t_npi) 1 else 1 - npi_isolation_symptoms_effect  # Reduction in infectiousness after symptoms
-npi_isolation_testing <- if (t < t_npi) 1 else 1 - npi_isolation_testing_effect  # Reduction in infectiousness after testing
-npi_importations <- if (t < t_npi) 1 else 1- npi_importations_effect  # Reduction in importations after NPIs
+npi_transmission01 <- if (t < t_npi) 1 else 1 - max(npi_efficacy_total, npi_efficacy_school)
+npi_transmission02 <- if (t < t_npi) 1 else 1 - max(npi_efficacy_total, npi_efficacy_working)
+npi_transmission03 <- if (t < t_npi) 1 else 1 - max(npi_efficacy_total, npi_efficacy_retired)
+npi_symptoms <- if (t < t_npi) 1 else 1 - npi_efficacy_isolation_symptoms  # Reduction in infectiousness after symptoms
+npi_testing  <- if (t < t_npi) 1 else 1 - npi_efficacy_isolation_testing  # Reduction in infectiousness after testing
 
-# Importations occur only in working age adults
-importations <- importations_user * npi_importations  # Modified by NPI
+# Importation inputs
+npi_importation <- if (t < t_npi) 1 else 1 - npi_efficacy_importation  # Reduction in importations after NPIs
 
+# Split the importation rate proportionally by population sizes
+importations01 <- npi_importation * importations_per_day * (N01 / N)
+importations02 <- npi_importation * importations_per_day * (N02 / N)
+importations03 <- npi_importation * importations_per_day * (N03 / N)
 
 # Homogeneous mixing for each age group with proportional contact
-foi01 <- npi_transmission01 * beta * C_total
-foi02 <- npi_transmission02 * beta * C_total
-foi03 <- npi_transmission03 * beta * C_total
+foi01 <- npi_transmission01 * beta * I_total / N
+foi02 <- npi_transmission02 * beta * I_total / N
+foi03 <- npi_transmission03 * beta * I_total / N
 
 # New infections considering both imported and locally acquired, ensuring not to exceed susceptibles
-new_infections01 <- min(S01, foi01 * S01)
-new_infections02 <- min(S02, foi02 * S02 + importations)
-new_infections03 <- min(S03, foi03 * S03)
+new_infections01 <- min(S01, foi01 * S01 + importations01)
+new_infections02 <- min(S02, foi02 * S02 + importations02)
+new_infections03 <- min(S03, foi03 * S03 + importations03)
 
-# Compartment-specific rates calculated from durations
-dur_E <- user(2, min = 0)  # duration in E compartment
-dur_A <- user(3, min = 0)  # duration in A compartment
-dur_I <- user(3, min = 0)  # duration in I compartment
-dur_T <- user(2, min = 0)  # duration in T compartment
-dur_M <- user(5, min = 0)  # duration in M compartment
-dur_H <- user(7, min = 0)  # duration in H compartment
-testing_rate <- 0  # not used currently
+# Correct infectious period calculation for each age group
+infectious_period01 <- dur_I_E + (1 - p_S) * dur_I_A + p_S * ((1 - IHR01) * dur_I_M + IHR01 * dur_I_H)
+infectious_period02 <- dur_I_E + (1 - p_S) * dur_I_A + p_S * ((1 - IHR02) * dur_I_M + IHR02 * dur_I_H)
+infectious_period03 <- dur_I_E + (1 - p_S) * dur_I_A + p_S * ((1 - IHR03) * dur_I_M + IHR03 * dur_I_H)
 
-rate_E <- 1 / dur_E  # rate from E to A/I
-rate_A <- 1 / dur_A  # rate from A to T/R
-rate_I <- 1 / dur_I  # rate from I to M/H
-rate_T <- 1 / dur_T  # rate from T to R
-rate_M <- 1 / dur_M  # rate from M to R
-rate_H <- 1 / dur_H  # rate from H to R/D
+# Calculate the weighted average infectious period across all age groups
+infectious_period <- (N01 * infectious_period01 +
+                      N02 * infectious_period02 +
+                      N03 * infectious_period03) / N
 
-# Calculate beta from R0
-R0 <- user(2.5, min = 0)  # Basic reproduction number (R0)
-dur_C01 <- p_S * (dur_I + (1 - IHR01) * dur_M) + (1 - p_S) * dur_A 
-dur_C02 <- p_S * (dur_I + (1 - IHR02) * dur_M) + (1 - p_S) * dur_A 
-dur_C03 <- p_S * (dur_I + (1 - IHR03) * dur_M) + (1 - p_S) * dur_A 
+# Calculate beta from R0 using the weighted average infectious period
+beta <- R0 / infectious_period
 
-dur_C <- (C01 * dur_C01 + C02 * dur_C02 + C03 * dur_C03) / C
-beta <- R0 / dur_C  # Transmission rate (beta) based on R0 and infectious period
+# Testing frequency input
+testing_rate <- 0  # Rate of testing individuals per day
 
-# variables for age group 01 (school-age)
+# Compartment flow (from exposed to presymptomatic and further compartments)
 deriv(S01) <- -new_infections01
-deriv(E01) <- new_infections01 - rate_E * E01
-deriv(A01) <- (1 - p_S) * rate_E * E01 - rate_A * A01 - testing_rate * A01
-deriv(I01) <- p_S * rate_E * E01 - rate_I * I01
-deriv(T01) <- testing_rate * A01 - rate_T * T01
-deriv(M01) <- (1 - IHR01) * rate_I * I01 - rate_M * M01
-deriv(H01) <- IHR01 * rate_I * I01 - rate_H * H01
-deriv(R01) <- rate_A * A01 + rate_T * T01 + (1 - HFR01) * rate_H * H01 + rate_M * M01
-deriv(D01) <- HFR01 * rate_H * H01
+deriv(E01) <- new_infections01 - rate_E * E01  # Non-infectious exposed
+deriv(I_E01) <- rate_E * E01 - rate_I_E * I_E01  # Presymptomatic infectious
+deriv(I_A01) <- (1 - p_S) * rate_I_E * I_E01 - rate_I_A * I_A01  # Asymptomatic infectious
+deriv(I_M01) <- p_S * (1 - IHR01) * rate_I_E * I_E01 - rate_I_M * I_M01  # Symptomatic mild (infectious)
+deriv(I_H01) <- p_S * IHR01 * rate_I_E * I_E01 - rate_I_H * I_H01  # Symptomatic severe (infectious)
+deriv(H01) <- rate_I_H * I_H01 - rate_H * H01  # Hospitalized (not infectious)
+deriv(T01) <- testing_rate * I_A01 - rate_T * T01  # Tested and isolated
+deriv(R01) <- rate_I_A * I_A01 + rate_I_M * I_M01 + rate_T * T01 + (1 - HFR) * rate_H * H01  # Recovered
+deriv(D01) <- HFR * rate_H * H01  # Deaths
 
-# variables for age group 02 (working-age)
-deriv(S02) <- -new_infections02
-deriv(E02) <- new_infections02 - rate_E * E02
-deriv(A02) <- (1 - p_S) * rate_E * E02 - rate_A * A02 - testing_rate * A02
-deriv(I02) <- p_S * rate_E * E02 - rate_I * I02
-deriv(T02) <- testing_rate * A02 - rate_T * T02
-deriv(M02) <- (1 - IHR02) * rate_I * I02 - rate_M * M02
-deriv(H02) <- IHR02 * rate_I * I02 - rate_H * H02
-deriv(R02) <- rate_A * A02 + rate_T * T02 + (1 - HFR02) * rate_H * H02 + rate_M * M02
-deriv(D02) <- HFR02 * rate_H * H02
-
-# variables for age group 03 (retired-age)
-deriv(S03) <- -new_infections03
-deriv(E03) <- new_infections03 - rate_E * E03
-deriv(A03) <- (1 - p_S) * rate_E * E03 - rate_A * A03 - testing_rate * A03
-deriv(I03) <- p_S * rate_E * E03 - rate_I * I03
-deriv(T03) <- testing_rate * A03 - rate_T * T03
-deriv(M03) <- (1 - IHR03) * rate_I * I03 - rate_M * M03
-deriv(H03) <- IHR03 * rate_I * I03 - rate_H * H03
-deriv(R03) <- rate_A * A03 + rate_T * T03 + (1 - HFR03) * rate_H * H03 + rate_M * M03
-deriv(D03) <- HFR03 * rate_H * H03
 
 # Initial conditions for age group 01 (school-age, no seeding with infections)
 initial(S01) <- N01
 initial(E01) <- 0
-initial(A01) <- 0
-initial(I01) <- 0
-initial(T01) <- 0
-initial(M01) <- 0
+initial(I_E01) <- 0
+initial(I_A01) <- 0
+initial(I_M01) <- 0
+initial(I_H01) <- 0
 initial(H01) <- 0
+initial(T01) <- 0
 initial(R01) <- 0
 initial(D01) <- 0
 
-# Initial conditions for age group 02 (working-age, no seeding with infections)
+# Compartment flow (from exposed to presymptomatic and further compartments)
+deriv(S02) <- -new_infections02
+deriv(E02) <- new_infections02 - rate_E * E02  # Non-infectious exposed
+deriv(I_E02) <- rate_E * E02 - rate_I_E * I_E02  # Presymptomatic infectious
+deriv(I_A02) <- (1 - p_S) * rate_I_E * I_E02 - rate_I_A * I_A02  # Asymptomatic infectious
+deriv(I_M02) <- p_S * (1 - IHR02) * rate_I_E * I_E02 - rate_I_M * I_M02  # Symptomatic mild (infectious)
+deriv(I_H02) <- p_S * IHR02 * rate_I_E * I_E02 - rate_I_H * I_H02  # Symptomatic severe (infectious)
+deriv(H02) <- rate_I_H * I_H02 - rate_H * H02  # Hospitalized (not infectious)
+deriv(T02) <- testing_rate * I_A02 - rate_T * T02  # Tested and isolated
+deriv(R02) <- rate_I_A * I_A02 + rate_I_M * I_M02 + rate_T * T02 + (1 - HFR) * rate_H * H02  # Recovered
+deriv(D02) <- HFR * rate_H * H02  # Deaths
+
+# Initial conditions for age group 02 (school-age, no seeding with infections)
 initial(S02) <- N02
 initial(E02) <- 0
-initial(A02) <- 0
-initial(I02) <- 0
-initial(T02) <- 0
-initial(M02) <- 0
+initial(I_E02) <- 0
+initial(I_A02) <- 0
+initial(I_M02) <- 0
+initial(I_H02) <- 0
 initial(H02) <- 0
+initial(T02) <- 0
 initial(R02) <- 0
 initial(D02) <- 0
 
-# Initial conditions for age group 03 (retired-age, no seeding with infections)
+# Compartment flow (from exposed to presymptomatic and further compartments)
+deriv(S03) <- -new_infections03
+deriv(E03) <- new_infections03 - rate_E * E03  # Non-infectious exposed
+deriv(I_E03) <- rate_E * E03 - rate_I_E * I_E03  # Presymptomatic infectious
+deriv(I_A03) <- (1 - p_S) * rate_I_E * I_E03 - rate_I_A * I_A03  # Asymptomatic infectious
+deriv(I_M03) <- p_S * (1 - IHR03) * rate_I_E * I_E03 - rate_I_M * I_M03  # Symptomatic mild (infectious)
+deriv(I_H03) <- p_S * IHR03 * rate_I_E * I_E03 - rate_I_H * I_H03  # Symptomatic severe (infectious)
+deriv(H03) <- rate_I_H * I_H03 - rate_H * H03  # Hospitalized (not infectious)
+deriv(T03) <- testing_rate * I_A03 - rate_T * T03  # Tested and isolated
+deriv(R03) <- rate_I_A * I_A03 + rate_I_M * I_M03 + rate_T * T03 + (1 - HFR) * rate_H * H03  # Recovered
+deriv(D03) <- HFR * rate_H * H03  # Deaths
+
+# Initial conditions for age group 03 (school-age, no seeding with infections)
 initial(S03) <- N03
 initial(E03) <- 0
-initial(A03) <- 0
-initial(I03) <- 0
-initial(T03) <- 0
-initial(M03) <- 0
+initial(I_E03) <- 0
+initial(I_A03) <- 0
+initial(I_M03) <- 0
+initial(I_H03) <- 0
 initial(H03) <- 0
+initial(T03) <- 0
 initial(R03) <- 0
 initial(D03) <- 0
 
+
+# Check total population size by adding all compartments for each age group
+output(check_total_popsize) <-
+  (S01 + E01 + I_E01 + I_A01 + I_M01 + I_H01 + H01 + T01 + R01 + D01) +
+  (S02 + E02 + I_E02 + I_A02 + I_M02 + I_H02 + H02 + T02 + R02 + D02) +
+  (S03 + E03 + I_E03 + I_A03 + I_M03 + I_H03 + H03 + T03 + R03 + D03)
+
 # Quantities to output
-output(infections01) <- new_infections01
-output(infections02) <- new_infections02
-output(infections03) <- new_infections03
+output(infections) <- new_infections01 + new_infections02 + new_infections03
+output(importations) <- importations01 + importations02 + importations03
 
 # Summary outputs
 output(S_total) <- S01 + S02 + S03
 output(E_total) <- E01 + E02 + E03
-output(A_total) <- A01 + A02 + A03
-output(I_total) <- I01 + I02 + I03
-output(T_total) <- T01 + T02 + T03
-output(M_total) <- M01 + M02 + M03
+output(I_E_total) <- I_E01 + I_E02 + I_E03
+output(I_A_total) <- I_A01 + I_A02 + I_A03
+output(I_M_total) <- I_M01 + I_M02 + I_M03
+output(I_H_total) <- I_H01 + I_H02 + I_H03
 output(H_total) <- H01 + H02 + H03
+output(T_total) <- T01 + T02 + T03
 output(R_total) <- R01 + R02 + R03
 output(D_total) <- D01 + D02 + D03
 
-# Parameters
-p_S <- user(0.7, min = 0, max = 1)  # Probability of developing symptoms
-IHR01 <- user(0.1, min = 0, max = 1)  # Infection Hospitalisation Rate for age group 01
-IHR02 <- user(0.1, min = 0, max = 1)  # Infection Hospitalisation Rate for age group 02
-IHR03 <- user(0.1, min = 0, max = 1)  # Infection Hospitalisation Rate for age group 03
-IFR01 <- user(0.1, min = 0, max = 1)  # Infection Fatality Rate for age group 01
-IFR02 <- user(0.1, min = 0, max = 1)  # Infection Fatality Rate for age group 02
-IFR03 <- user(0.1, min = 0, max = 1)  # Infection Fatality Rate for age group 03
-
-# Derived Hospital Fatality Rate (HFR) from IFR and IHR
-HFR01 <- IFR01 / IHR01
-HFR02 <- IFR02 / IHR02
-HFR03 <- IFR03 / IHR03
-
-# Check total population size by summing all compartments across all age groups
-output(check_total_popsize) <- (S01 + E01 + A01 + I01 + T01 + M01 + H01 + R01 + D01) +
-  (S02 + E02 + A02 + I02 + T02 + M02 + H02 + R02 + D02) +
-  (S03 + E03 + A03 + I03 + T03 + M03 + H03 + R03 + D03)
