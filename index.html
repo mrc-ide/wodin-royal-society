@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="files/index/index.css"/>
     <link rel="stylesheet" href="files/index/collapse.css"/>
-    <script language="JavaScript" type="text/javascript" src="files/index/jquery-1.11.3/jquery.min.js"></script>
+    <script language="JavaScript" type="text/javascript" 
+            src="files/index/jquery-1.11.3/jquery.min.js"></script>
     <script src="files/index/staff.js"></script>
     <script src="files/index/collapse.js"></script>
     <script src="files/index/after.js"></script>
@@ -15,7 +16,55 @@
     <div class="main">
       <div class="container mt-5">
         <h3>Modelling non-pharmaceutical interventions</h3>
-        <p><a href="apps/seir">Go to app</a></p>
+        <p><a href="apps/npi">Go to app</a></p>
+        
+        <h4>Introduction</h4>
+        <p>Non-pharmaceutical interventions (NPIs) are actions, apart from getting 
+        vaccinated and taking medicine, that people and communities can take to help 
+        slow the spread of illnesses like pandemic influenza or COVID-19. These actions 
+        include things like social distancing, mask-wearing, and quarantining.</p>
+
+        <h4>Modelling Non-Pharmaceutical Interventions</h4>
+        <p>This tool enables the user to explore the potential impact of a range of 
+        non-pharmaceutical interventions (NPIs) on a potential outbreak of a respiratory 
+        pathogen.</p>
+
+        <h5>Disease Transmission</h5>
+        <p>The tool simulates how a respiratory virus spreads within a population. People 
+        start in the “susceptible” category (S), meaning they are healthy but at risk of 
+        catching the disease. If they are exposed to someone infectious, they move into 
+        the “exposed” group (E), where they carry the virus but are not yet infectious 
+        themselves. From here, they either develop symptoms and move into the 
+        “symptomatic infected” group (I), or they stay without symptoms and move into 
+        the “asymptomatic” group (A). Asymptomatic individuals all eventually recover (R), 
+        but symptomatic people might be hospitalized (H), and hospitalized people can 
+        either recover (R) or die (D). The model tracks how many people are in each 
+        disease stage over time.</p>
+
+        <h5>NPI Effects</h5>
+        <p>The tool allows the user to explore the potential impact of NPIs that work in 
+        the following ways:</p>
+        <ul>
+          <li><strong>Reducing overall transmission:</strong> This could represent 
+          measures like lockdowns or restrictions that apply to everyone, which make it 
+          harder for the virus to spread from one person to another.</li>
+          <li><strong>Reducing contact rates for specific age groups:</strong> Some 
+          measures target particular age groups to reduce their exposure, such as closing 
+          schools or protecting older adults by reducing interactions between different 
+          generations.</li>
+          <li><strong>Reducing infectiousness of those who are sick:</strong> This 
+          focuses on lowering the chance that someone with the virus will pass it on to 
+          others. It might involve isolating people with symptoms or ensuring those who 
+          test positive stay at home.</li>
+          <li><strong>Reducing the importation of new cases:</strong> This intervention 
+          reduces the number of infections brought into a community from outside, such as 
+          through travel restrictions or quarantine for people entering the country.</li>
+        </ul>
+        <p>The user can specify the time at which NPIs are implemented, and how effective 
+        they are, and explore their potential impact for a range of disease profiles.</p>
+
+        <h5>Population Structure</h5>
+        <p>TO DO.</p>
       </div>
     </div>
   </body>
