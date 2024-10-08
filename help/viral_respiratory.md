@@ -1,203 +1,182 @@
-# Modelling Non-Pharmaceutical Interventions for Viral Respiratory Pathogens
+# **Modelling Non-Pharmaceutical Interventions for Viral Respiratory Pathogens**
 
-## Introduction
+## **Introduction**
 
-Non-pharmaceutical interventions (NPIs) are actions, apart from getting 
-vaccinated and taking medicine, that people and communities can take to 
-help slow the spread of illnesses like pandemic influenza or COVID-19. 
-These actions include things like social distancing, mask-wearing, and 
-quarantining.
+Non-pharmaceutical interventions (NPIs) are actions, apart from getting vaccinated and taking medicine, that people and communities can take to help slow the spread of illnesses like pandemic influenza or COVID-19. These actions include things like social distancing, mask-wearing, and quarantining.
 
-## Modelling Non-Pharmaceutical Interventions
+## **Modelling Non-Pharmaceutical Interventions**
 
-This tool enables the user to explore the potential impact of a range of 
-non-pharmaceutical interventions (NPIs) on a potential outbreak of a viral
-respiratory pathogen.
+This tool enables the user to explore the potential impact of a range of non-pharmaceutical interventions (NPIs) on a potential outbreak of a viral respiratory pathogen.
 
-### A. Disease Transmission
+### **A. Disease Transmission**
 
-The tool simulates how a respiratory virus spreads within an age-structured
-population. People start in the “susceptible” category (S), meaning they are 
-healthy but at risk of catching the disease. If they are exposed to someone 
-infectious, they move into the “exposed” group (E), where they carry the 
-virus but are not yet symptomatic. From here, they either 
-develop symptoms and move into the “symptomatic infected” group (I), or 
-they stay without symptoms and move into the “asymptomatic” group (A). 
-Asymptomatic individuals all eventually recover (R), but symptomatic 
-people might be hospitalized (H), and hospitalized people can either 
-recover (R) or die (D). The age of an individual impacts their risk of different 
-disease outcomes as well as the impact of different NPIs. The model tracks and
-outputs how many people are in each disease stage over time.
+The tool simulates how a respiratory virus spreads within an age-structured population. People start in the “susceptible” category (S), meaning they are healthy but at risk of catching the disease. If they are exposed to someone infectious, they move into the “exposed” group (E), where they carry the virus but are not yet symptomatic. From here, they either develop symptoms and move into the “symptomatic infected” group (I), or they stay without symptoms and move into the “asymptomatic” group (A). Asymptomatic individuals all eventually recover (R), but symptomatic people might be hospitalized (H), and hospitalized people can either recover (R) or die (D). The age of an individual impacts their risk of different disease outcomes as well as the impact of different NPIs. The model tracks and outputs how many people are in each disease stage over time.
 
 **INSERT COMPARTMENTAL FIGURE HERE**
 
-#### A.1. Disease Transmission Parameters
+#### **A.1. Disease Transmission Parameters**
 
-Infectious disease models are designed to mirror the specific biological 
-and epidemiological characteristics of a pathogen. This process, known as 
-parameterisation, involves setting key parameters that capture how a 
-disease spreads, how quickly it progresses, and how it affects different 
-segments of the population. For respiratory viruses, like COVID-19, a number
-of different parameters need to be parameterised to accurately reflect how 
-the virus behaves and to predict its impact.
+Infectious disease models are designed to mirror the specific biological and epidemiological characteristics of a pathogen. This process, known as parameterisation, involves setting key parameters that capture how a disease spreads, how quickly it progresses, and how it affects different segments of the population. For respiratory viruses, like COVID-19, a number of different parameters need to be parameterised to accurately reflect how the virus behaves and to predict its impact.
 
-------------------------------------------------------------------------
+---
 
-|                   Parameter                    |                                                                                                                     Definition                                                                                                                      |
-|:----------------------------------:|:----------------------------------:|
-|       **R0 (Basic Reproduction Number)**       |                  Measures how contagious a pathogen is by indicating the average number of secondary infections caused by one infected individual in a fully susceptible population. A higher R0 implies greater transmissibility.                  |
-|             **Incubation Period**              |                     The time between exposure to the pathogen and the onset of symptoms. This period determines how quickly a pathogen spreads and can influence how long an individual is infectious before symptoms develop.                      |
-|             **Symptomatic Period**             |               The duration during which an infected individual exhibits symptoms of the disease. The length of this period can affect the likelihood of identifying and isolating cases, influencing the success of control measures.               |
-| **Percentage of Incubation Period Infectious** | The proportion of the incubation period during which an infected person is capable of transmitting the pathogen. This is critical for understanding the potential for pre-symptomatic transmission and designing effective intervention strategies. |
-|   **Proportion of Asymptomatic Infections**    |                              The percentage of infected individuals who do not show symptoms but can still transmit the pathogen. This affects the overall transmission dynamics and may complicate control measures.                               |
-|         **Severity by Age (IHR/IFR)**          |         Infection Hospitalisation Rate (IHR) and Infection Fatality Rate (IFR) describe the likelihood of an individual requiring hospital care or dying from the infection, often varying by age group and other individual risk factors.          |
+|Model Code |Parameter | Definition                                      |
+|----------|----------|------------------------------------------------------------|
+| **A0** | **Importation Rate** | The rate at which new cases of a disease are introduced into a population from external sources, such as international travel or movement between regions. The importation rate will determine the need for interventions like border controls or quarantines. |
+| **A1** | **R0 (Basic Reproduction Number)** | The average number of secondary infections caused by one infected individual in a fully susceptible population. A higher R0 implies a more contagious pathogen with greater transmissibility. |
+| **A2** | **Incubation Period** | The time between exposure to the pathogen and the onset of symptoms. This period determines how quickly a pathogen spreads and the duration of self-isolation policies after infectious contact.  |
+| **A3** | **Percentage of Incubation Period Infectious** | The proportion of the incubation period during which an infected person is capable of transmitting the pathogen. This is critical for designing intervention policies and the need for diagnostic testing. |
+| **A4** | **Proportion of Asymptomatic Infections** | The percentage of infected individuals who do not show symptoms but can still transmit the pathogen. This affects the overall transmission dynamics and the need for diagnostic testing.  |
+| **A5** | **Symptomatic Period** | The duration during which an infected individual exhibits symptoms of the disease. Longer symptomatic periods will require longer case isolation policies to prevent onward spread of infections. |
+| **A6 \- A8** | **Severity by Age (IHR/IFR)** | Infection Hospitalisation Rate (IHR) and Infection Fatality Rate (IFR) describe the likelihood of an individual requiring hospital care or dying from the infection, often varying by age group and other individual risk factors. |
 
-------------------------------------------------------------------------
+---
 
-Different pathogens have distinct characteristics in terms of transmission dynamics, 
-incubation periods, and severity, highlighted by comparing three notable viral 
-respiratory pathogens: Severe Acute Respiratory Syndrome coronavirus 1 (SARS-1), 
-influenza, and Respiratory Syncytial Virus (RSV). The table below summarises key 
-epidemiological parameters for each respiratory viral pathogen.
+Different pathogens have distinct characteristics in terms of transmission dynamics, incubation periods, and severity, highlighted by comparing three notable viral respiratory pathogens: Severe Acute Respiratory Syndrome coronavirus 1 (SARS-1), influenza, and Respiratory Syncytial Virus (RSV). The table below summarises key epidemiological parameters for each respiratory viral pathogen.
 
-------------------------------------------------------------------------
+---
 
-| Pathogen      | R0        | Incubation Period | Symptomatic Period                                                | Percentage of Incubation Period Infectious                 | Proportion of Asymptomatic Infections                                  | IFR                           | IHR                           |
-|---------|---------|---------|---------|---------|---------|---------|---------|
-| **SARS-1**    | \~2-3     | \~4-6 days        | \~7-10 days【INQ000249526†source】                                | \~10-20%【INQ000249526†source】                            | \<10%【INQ000249526†source】                                           | \~10%【INQ000249526†source】  | \~20%【INQ000249526†source】  |
-| **Influenza** | 0.9 - 2.1 | \~1-2 days        | \~5-7 days【INQ000249526†source】                                 | \~30-50%【INQ000249526†source】                            | \~20-50%, varies by strain【INQ000249526†source】                      | \~0.1%【INQ000249526†source】 | \~2-5%【INQ000249526†source】 |
-| **RSV**       | \~3       | \~3-6 days        | \~8-12 days in children; shorter in adults【INQ000249526†source】 | \~20-30% (primarily among children)【INQ000249526†source】 | \~40%, with higher asymptomatic rates in adults【INQ000249526†source】 | \<0.1%【INQ000249526†source】 | \~1-3%【INQ000249526†source】 |
+| Pathogen | R0 | Incubation Period | Symptomatic Period | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR | IHR |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **SARS-1** | \~2-3[1](https://paperpile.com/c/hiHlId/NJJA) | \~4-6 days[2](https://paperpile.com/c/hiHlId/Fnf6) | \~7-21 days[3,4](https://paperpile.com/c/hiHlId/cIuN+gb52) | \~0-10%[1](https://paperpile.com/c/hiHlId/NJJA) | \<5%[5](https://paperpile.com/c/hiHlId/NaVF) | \~9-15%[6](https://paperpile.com/c/hiHlId/u9dP) | \~100%[7](https://paperpile.com/c/hiHlId/38R0) |
+| **Influenza** | \~1-2[8](https://paperpile.com/c/hiHlId/ohLi) | \~1-4 days[9](https://paperpile.com/c/hiHlId/IMKs) | \~3-7 days[10](https://paperpile.com/c/hiHlId/WldU) | \~25-50%[11](https://paperpile.com/c/hiHlId/wEVP) | \~15-75%\*[12,13](https://paperpile.com/c/hiHlId/iMpN+asay) | \~0.01 \- 0.1%\*\* [14,15](https://paperpile.com/c/hiHlId/Dq5a+7lIk) | \~0.0002% \- 0.0007%[16](https://paperpile.com/c/hiHlId/RMuY) |
+| **RSV** | \~1-3[17,18](https://paperpile.com/c/hiHlId/nxC6+IHiv) | \~3-6 days[17,19](https://paperpile.com/c/hiHlId/nxC6+Uf8c) | \~7-12 days [20,21](https://paperpile.com/c/hiHlId/aLCv+6zlW) | \~0-10%[22](https://paperpile.com/c/hiHlId/99dX)  | \~20-40%\*\*\*[23,24](https://paperpile.com/c/hiHlId/XCUy+s2Ge) | \<0.1%[25](https://paperpile.com/c/hiHlId/2Q46) | \~1-3%\*\*\*[26](https://paperpile.com/c/hiHlId/baTR) |
 
-------------------------------------------------------------------------
+\* Varies by strain and study  
+\*\* 1918 H1N1 IFR \~2%  
+\*\*\* Proportion of infections that are symptomatic and proportion of infections requiring hospitalisation higher in children and elderly adults  
 
-These parameters illustrate the differences in transmission dynamics and severity 
-across pathogens, and help understand how to design appropriate public health 
-strategies. For example, SARS-1 could be effectively controlled through isolating 
-symptomatic individuals due to the limited pre-symptomatic transmission. On the 
-other hand, influenza’s shorter incubation period and higher pre-symptomatic 
-transmission requires broader interventions to reduce spread. RSV's higher R0, 
-in combination with increased rates of pre-symptomatic transmission amongst 
-children necessitates targeted paediatric responses. The combination of each 
-parameter will determine how difficult the spread of the pathogen is to control.
+---
 
-### A.2. How To Choose Disease Transmission Parameters
+These parameters illustrate the differences in transmission dynamics and severity across pathogens, and help understand how to design appropriate public health strategies. For example, SARS-1 could be effectively controlled through isolating symptomatic individuals due to the limited pre-symptomatic transmission. On the other hand, influenza’s shorter incubation period and higher pre-symptomatic transmission requires broader interventions to reduce spread. RSV's higher R0, in combination with increased rates of pre-symptomatic transmission amongst children necessitates targeted paediatric responses. The combination of each parameter will determine how difficult the spread of the pathogen is to control.
 
-When using this tool to model the spread of a specific viral respiratory pathogen, 
-you need to choose parameters that accurately reflect the characteristics of that 
-pathogen. The default parameters are set to reflect central estimates for COVID-19
-in early 2020, but you can adjust these values to model other pathogens or 
-variations in disease behaviour. By changing these parameters in the tool, users 
-can also explore the impact of each parameter on epidemic dynamics and the effectiveness
-of NPIs.
+### **A.2. How To Choose Disease Transmission Parameters**
 
-### B. NPI Effects
+When using this tool to model the spread of a specific viral respiratory pathogen, you need to choose parameters that accurately reflect the characteristics of that pathogen. The default parameters are set to reflect central estimates for COVID-19 in early 2020, but you can adjust these values to model other pathogens or variations in disease behaviour. By changing these parameters in the tool, users can also explore the impact of each parameter on epidemic dynamics and the effectiveness of NPIs.
 
-The tool allows the user to explore the potential impact of NPIs and how 
-effective they are, and explore their potential impact for a range of 
-disease profiles. The NPIs available to model work in the following ways:
+### **B. NPI Effects**
 
- - **1. Reducing transmission amongst contacts:** This could represent measures like
-  social distancing and mask wearing, which make it harder 
-  for the virus to spread from one person to another.
-- **2. Reducing contact rates for specific age groups:** Some measures 
-  target particular age groups to reduce their exposure, such as closing 
-  schools or protecting older adults by reducing interactions between 
-  different generations. Lockdowns, which impact all age groups, would reduce
-  contact rates amongst all ages.
-- **3. Reducing infectiousness of those who are sick:** This focuses on 
-  lowering the chance that someone with the virus will pass it on to 
-  others. It might involve isolating people with symptoms or ensuring 
-  those who test positive stay at home.
-- **4. Reducing the importation of new cases:** This intervention reduces 
-  the number of infections brought into a community from outside, such 
-  as through travel restrictions or quarantine for people entering the 
-  country.
+The tool allows the user to explore the potential impact of NPIs and how effective they are, and explore their potential impact for a range of disease profiles. The model code for the NPIs available to model work in the following ways, with the model code included.:
 
-The user can also specify the time at which NPIs are implemented, and how 
-effective they are, and explore their potential impact for a range of 
-disease profiles.
+- **B1. Reducing transmission amongst contacts:** This could represent measures like social distancing and mask wearing, which make it harder for the virus to spread from one person to another.  
+- **B2. Reducing contact rates for specific age groups:** Some measures target particular age groups — **B2a**: Under 18s, **B2b**: 18-65, **B2c**: Over 65s — to reduce their exposure, such as closing schools or protecting older adults by reducing interactions between different generations. Lockdowns, which impact all age groups, would reduce contact rates amongst all ages.  
+- **B3. Reducing infectiousness of those who are sick:** This focuses on lowering the chance that someone with the virus will pass it on to others. This includes **B3a** \- isolating people with symptoms and **B3b** \- ensuring those who test positive stay at home.  
+- **B4. Reducing the importation of new cases:** This intervention reduces the number of infections brought into a community from outside, such as through travel restrictions or quarantine for people entering the country.
 
-#### B.2. NPI Effect Parameters
+The user can also specify the time at which NPIs are implemented, and how effective they are, and explore their potential impact for a range of disease profiles.
 
-The impact that each NPI will have depends on a number of factors (the severity 
-of the pathogen, the level of public adherence with guidelines, the stringency 
-of restrictions etc). The estimates provided in the table below provide a range 
-for the impact of different interventions for COVID-19 if implemented on their own.
+#### **B.1. NPI Effect Parameters**
 
-------------------------------------------------------------------------
+The impact that each NPI will have depends on a number of factors (the severity of the pathogen, the level of public adherence with guidelines, the stringency of restrictions etc). The estimates provided in the table below provide a range for the impact of different interventions for COVID-19 if implemented on their own.
 
-|              Category of Intervention              |         Broad NPI Category          |             Intervention              |     Range of Impact (Reduction)      |                   Reference                   |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-|     **Reducing transmission amongst contacts**      |          Social Distancing          |      Lockdowns (Partial - Full)       |                30-80%                |   Davies et al., 2020; Flaxman et al., 2020   |
-|                                                    |          Social Distancing          |      Social Distancing (General)      |                15-45%                |    Haug et al., 2020; Brauner et al., 2021    |
-|                                                    |          Social Distancing          |   Limiting Gatherings (Event Bans)    |                15-45%                |  Flaxman et al., 2020; Brauner et al., 2021   |
-|                                                    | Business and Workplace Restrictions |          Workplace Closures           |                15-50%                |  Flaxman et al., 2020; Brauner et al., 2021   |
-|     **Reduction to (Age) Group Contact Rates**     |        Educational Measures         |            School Closures            | 20-60% (amongst school age children) |    Viner et al., 2020; Davies et al., 2020    |
-|                                                    |          Social Distancing          | Curfews / Restricted Operating Hours  |                10-25%                |    Brauner et al., 2021; Haug et al., 2020    |
-|                                                    |         Targeted Protection         |  Age-Based Shielding (E.g., Elderly)  |   30-50% (for specific age group)    |    Davies et al., 2020; Haug et al., 2020     |
-| **Reduction in Infectiousness of a Disease State** |    Personal Protective Measures     |         Mask-Wearing Mandates         |                10-30%                |    Chu et al., 2020; Brauner et al., 2021     |
-|                                                    |           Case Isolation            |    Isolation of Symptomatic Cases     |                40-70%                |  Davies et al., 2020; Kucharski et al., 2020  |
-|                                                    |   Contact Tracing and Quarantine    |        Quarantine of Contacts         |                30-60%                | Ferretti et al., 2020; Hellewell et al., 2020 |
-|         **Reduction to Importation Rate**          |         Travel Restrictions         | Travel Restrictions / Border Controls |                10-50%                |    Grépin et al., 2021; Haug et al., 2020     |
+---
 
-### B.2. How To Choose NPI Effect Parameters
+| Category of Intervention | Broad NPI Category | Intervention | Range of Impact (Reduction) | Reference |
+| :---: | :---: | ----- | :---: | :---: |
+| **Reducing transmission amongst contacts** | Protection Measures | Face Coverings (Masks) | 20% | Boulos et al., 2023 Review |
+|  |  | Respirators (N95, KN95, FFP2) | 30% | Boulos et al., 2023 Review |
+|  | Individual Behavioural | Hand Hygiene | 10% | Gozdielewska et al., 2022 |
+|  |  | Respiratory Etiquette | 15% | 2021 NHS Scotland Literature Review |
+|  | Community Measures | Physical Distancing | 15% | Murphy et al., 2023 Review |
+|  |  | Encouraging Outdoor Meetings | 25% | Murphy et al., 2023 Review |
+| **Reducing contact rates for specific age groups** | Community Measures | Lockdowns (Partial \- Full)\* | 30-80% | Davies et al., 2020; Flaxman et al., 2020 |
+|  |  | School Measures and Closures | 20% | Murphy et al., 2023 Review |
+|  |  | Work at home orders | 25% | Beck et al 2020 |
+|  |  | Public Event Cancellations | 25% | Brauner et al 2021 |
+| **Reducing infectiousness of those who are sick** | Community Measures | Symptomatic or Positive Test Self-Isolation | 25% | Murphy et al., 2023 Review |
+|  | Testing Measures | Mass Testing | 30% | Littlecott et al., 2023 Review |
+|  |  | Contact Tracing | 30% | Littlecott et al., 2023 Review |
+| **Reducing the importation of new cases** | Travel Restrictions | Border Closures | 20% | Grépin et al., 2023 Review |
+|  |  | Entry Screening and Quarantine for Travellers | 20% | Grépin et al., 2023 Review |
 
-The impact that each NPI will have depends on a number of factors (the epidemiological 
-parameters of the pathogen, the level of public adherence with guidelines, the stringency 
-of restrictions etc). While many of these interventions were implemented during 
-the UK response to the COVID-19 pandemic, accurately estimating the impact of 
-different interventions on disease transmission is a challenging task. This is 
-because often interventions were implemented at the same time as other interventions, 
-making it harder to quantify the contribution of each intervention, and some 
-interventions, like lockdowns, inherently encompass others, such as school and 
-workplace closures. The estimates provided in the table above therefore reflect 
-current best estimates of the impact of each NPI if implemented in isolation.
+### 
 
-The default NPI parameters are set to 0 to reflect an unmitigated epidemic. When 
-using this tool to model the impact of NPI, you need to choose parameters 
-that reflect the total impact of NPIs in each of the four intervention categories. 
-To help users understand how to choose these values, we have provided a worked to
-reflect the implementation of the following NPI interventions 14 days after the first
-individual is admitted to hospital with severe disease:
+#### **B.2. How To Choose NPI Effect Parameters**
 
-* Work-from home order - 60% of workforce able to work-from home
-* School closures - All school-aged individuals assumed to have 80% fewer contacts 
-* Mask mandate - 50% of population adhere to mask mandate 
-* Symptomatic cases to self-isolate - 50% of symptomatic cases adhere to policy
-* Border controls - Reduces importations by 30%
+The impact that each NPI will have depends on a number of factors (the epidemiological parameters of the pathogen, the level of public adherence with guidelines, the stringency of restrictions etc). While many of these interventions were implemented during the UK response to the COVID-19 pandemic, accurately estimating the impact of different interventions on disease transmission is a challenging task. This is because often interventions were implemented at the same time as other interventions, making it harder to quantify the contribution of each intervention, and some interventions, like lockdowns, inherently encompass others, such as school and workplace closures. The estimates provided in the table above therefore reflect current best estimates of the impact of each NPI **if implemented in isolation**.
 
-- **1. Reducing transmission amongst contacts:** 
+The default NPI parameters in the tool are set to 0 to reflect an unmitigated epidemic. When using this tool to model the impact of NPI, you need to choose parameters that reflect the total impact of NPIs in each of the four intervention categories. To help users understand how to choose these values, we have provided a worked example to reflect the implementation of the following NPI interventions and possible parameter values for the tool:
 
-This could represent measures like 
-  lockdowns or restrictions that apply to everyone, which make it harder 
-  for the virus to spread from one person to another.
-- **2. Reducing contact rates for specific age groups:** Some measures 
-  target particular age groups to reduce their exposure, such as closing 
-  schools or protecting older adults by reducing interactions between 
-  different generations.
-- **3. Reducing infectiousness of those who are sick:** This focuses on 
-  lowering the chance that someone with the virus will pass it on to 
-  others. It might involve isolating people with symptoms or ensuring 
-  those who test positive stay at home.
-- **4. Reducing the importation of new cases:** This intervention reduces 
-  the number of infections brought into a community from outside, such 
-  as through travel restrictions or quarantine for people entering the 
-  country.
+* Work-from home order \- 60% of workforce able to work-from home:  
+  - Assumed 25% reduction in transmission for those who can work from home  
+  - B2b set equal to 0.15 (60% of 25% effect)
 
-The default 
-parameters are set to 0 to reflect an unmitigated epidemic. reflect central estimates for NPI effectiveness on COVID-19 
-in early 2020 and are assumed to be implemented 14 days after the first patient 
-admitted to hospital with severe disease. These estimates reflect the following  , ibut you can adjust these values to model other pathogens or 
-variations in disease behaviour. To do so, it is helpful to consider how each 
-parameter influences transmission and severity, using the information provided 
-in the tool as guidance.NPI effect estimates, While some studies, like the one by Sharma 
-et al. (Nature Communications, 2021), attempt to isolate the effects of individual NPIs, 
-there is no comprehensive approach or study that can account for the full range of 
-interventions and estimate their combined impact on transmission. Therefore the 
-table above is provided to help provide an indication of the range of impacts 
-that an individual NPI could have and guide the user when selecting a value for 
-each of the NPI intervention levers. Given the difficulty of deciding on a 
-specific estimate for each of the levers, especially when considering different 
-respiratory viral pathogens (most of these interventions have only been studied 
-in the context of COVID-19), the “Sensitivity” tab allows users to compare the 
-impact of different NPIs.
+* School closures \- 20% of school-aged individuals still interact with other children:  
+  - Assumed 20% reduction in transmission amongst children  
+  - B2a set equal to 0.16 (80% of 20% effect)
+
+* Mask mandate \- 50% of population adhere to mask mandate:  
+  - Assumed 20% reduction in transmission amongst all contacts  
+  - B1 set equal to 0.1 (50% of 20% effect)
+
+* Symptomatic cases to self-isolate \- 50% of symptomatic cases adhere to policy:  
+  - Assumed 25% reduction in transmission amongst all contacts  
+  - B3a set equal to 0.125 (50% of 25% effect)
+
+* Border controls \- Only 80% of incoming travel is impacted:  
+  - Assumed 20% reduction in importations  
+  - B4 set equal to 0.16 (80% of 20% effect)
+
+* NPI delay \-  NPIs implemented 14 days after the first hospitalisation with severe disease:  
+  - B5 set equal to 14
+
+The suite of interventions above was chosen as the impact of each intervention will mostly affect one component of transmission. However, introduction of the above suite of interventions is likely to change human behaviour more broadly. For example, individuals may change their personal behaviours to reduce their own risk, especially if the suite of interventions conveys that the pathogen threat is serious. As a result there may be a greater reduction in transmission amongst contacts. Alternatively, individuals may show lower adherence with these interventions given that the epidemic is in its early stages and there have been limited hospitalisations and deaths.
+
+---
+
+Ultimately, deciding on the correct parameters is not the aim when using this tool. The tool and the accompanying guidance allow users to explore how both the epidemiology of the pathogen and the combination of implemented NPIs determine how difficult the spread of the pathogen is to control. Exploring these processes, by changing the parameters used and observing the change in public health outcomes, will provide a greater understanding of epidemic dynamics and the timeliness and impact of different NPIs.
+
+### **References** 
+
+1\. 	[Lipsitch M, Cohen T, Cooper B, et al. Transmission dynamics and control of severe acute respiratory syndrome. *Science* 2003; 300: 1966–1970.](http://paperpile.com/b/hiHlId/NJJA)
+
+2\. 	[Donnelly CA, Ghani AC, Leung GM, et al. Epidemiological determinants of spread of causal agent of severe acute respiratory syndrome in Hong Kong. *Lancet* 2003; 361: 1761–1766.](http://paperpile.com/b/hiHlId/Fnf6)
+
+3\. 	[Peiris JSM, Lai ST, Poon LLM, et al. Coronavirus as a possible cause of severe acute respiratory syndrome. *Lancet* 2003; 361: 1319–1325.](http://paperpile.com/b/hiHlId/cIuN)
+
+4\. 	[Lee N, Hui D, Wu A, et al. A major outbreak of severe acute respiratory syndrome in Hong Kong. *N Engl J Med* 2003; 348: 1986–1994.](http://paperpile.com/b/hiHlId/gb52)
+
+5\. 	[Leung GM, Hedley AJ, Ho L-M, et al. The epidemiology of severe acute respiratory syndrome in the 2003 Hong Kong epidemic: an analysis of all 1755 patients. *Ann Intern Med* 2004; 141: 662–673.](http://paperpile.com/b/hiHlId/NaVF)
+
+6\. 	[World Health Organization. *Consensus document on the epidemiology of severe acute respiratory syndrome (‎SARS)‎*. WHO/CDS/CSR/GAR/2003.11, World Health Organization,](http://paperpile.com/b/hiHlId/u9dP) [https://iris.who.int/handle/10665/70863](https://iris.who.int/handle/10665/70863) [(2003, accessed 8 October 2024).](http://paperpile.com/b/hiHlId/u9dP)
+
+7\. 	[Severe Acute Respiratory Syndrome \--- Taiwan, 2003,](http://paperpile.com/b/hiHlId/38R0) [https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm](https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm) [(2003, accessed 8 October 2024).](http://paperpile.com/b/hiHlId/38R0)
+
+8\. 	[Biggerstaff M, Cauchemez S, Reed C, et al. Estimates of the reproduction number for seasonal, pandemic, and zoonotic influenza: a systematic review of the literature. *BMC Infect Dis* 2014; 14: 480\.](http://paperpile.com/b/hiHlId/ohLi)
+
+9\. 	[Lessler J, Reich NG, Brookmeyer R, et al. Incubation periods of acute respiratory viral infections: a systematic review. *Lancet Infect Dis* 2009; 9: 291–300.](http://paperpile.com/b/hiHlId/IMKs)
+
+10\. 	[Carrat F, Vergu E, Ferguson NM, et al. Time lines of infection and disease in human influenza: a review of volunteer challenge studies. *Am J Epidemiol* 2008; 167: 775–785.](http://paperpile.com/b/hiHlId/WldU)
+
+11\. 	[Cowling BJ, Chan KH, Fang VJ, et al. Comparative epidemiology of pandemic and seasonal influenza A in households. *N Engl J Med* 2010; 362: 2175–2184.](http://paperpile.com/b/hiHlId/wEVP)
+
+12\. 	[Hayward AC, Fragaszy EB, Bermingham A, et al. Comparative community burden and severity of seasonal and pandemic influenza: results of the Flu Watch cohort study. *Lancet Respir Med* 2014; 2: 445–454.](http://paperpile.com/b/hiHlId/iMpN)
+
+13\. 	[Leung NHL, Xu C, Ip DKM, et al. Review article: The fraction of influenza virus infections that are asymptomatic: A systematic review and meta-analysis. *Epidemiology* 2015; 26: 862–872.](http://paperpile.com/b/hiHlId/asay)
+
+14\. 	[Paget J, Spreeuwenberg P, Charu V, et al. Global mortality associated with seasonal influenza epidemics: New burden estimates and predictors from the GLaMOR Project. *J Glob Health* 2019; 9: 020421\.](http://paperpile.com/b/hiHlId/Dq5a)
+
+15\. 	[World Health Assembly. *Implementation of the International Health Regulations (‎2005)‎: report of the Review Committee on the Functioning of the International Health Regulations (‎2005)‎ in relation to Pandemic (‎H1N1)‎ 2009: report by the Director-General*. A64/10, World Health Organization,](http://paperpile.com/b/hiHlId/7lIk) [https://iris.who.int/handle/10665/3350](https://iris.who.int/handle/10665/3350) [(2011, accessed 8 October 2024).](http://paperpile.com/b/hiHlId/7lIk)
+
+16\. 	[Paget J, Staadegaard L, Wang X, et al. Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions. *J Glob Health* 2023; 13: 04003\.](http://paperpile.com/b/hiHlId/RMuY)
+
+17\. 	[Wang X, Li Y, Shi T, et al. Global disease burden of and risk factors for acute lower respiratory infections caused by respiratory syncytial virus in preterm infants and young children in 2019: a systematic review and meta-analysis of aggregated and individual participant data. *Lancet* 2024; 403: 1241–1253.](http://paperpile.com/b/hiHlId/nxC6)
+
+18\. 	[Reis J, Shaman J. Retrospective parameter estimation and forecast of respiratory syncytial virus in the United States. *PLoS Comput Biol* 2016; 12: e1005133.](http://paperpile.com/b/hiHlId/IHiv)
+
+19\. 	[Welliver RC. Review of epidemiology and clinical risk factors for severe respiratory syncytial virus (RSV) infection. *J Pediatr* 2003; 143: S112–7.](http://paperpile.com/b/hiHlId/Uf8c)
+
+20\. 	[Hall CB. Respiratory syncytial virus and parainfluenza virus. *N Engl J Med* 2001; 344: 1917–1928.](http://paperpile.com/b/hiHlId/aLCv)
+
+21\. 	[Munywoki PK, Koech DC, Agoti CN, et al. Influence of age, severity of infection, and co-infection on the duration of respiratory syncytial virus (RSV) shedding. *Epidemiol Infect* 2015; 143: 804–812.](http://paperpile.com/b/hiHlId/6zlW)
+
+22\. 	[Hall CB, Douglas RG Jr, Schnabel KC, et al. Infectivity of respiratory syncytial virus by various routes of inoculation. *Infect Immun* 1981; 33: 779–783.](http://paperpile.com/b/hiHlId/99dX)
+
+23\. 	[Munywoki PK, Koech DC, Agoti CN, et al. Frequent asymptomatic respiratory syncytial virus infections during an epidemic in a rural Kenyan household cohort. *J Infect Dis* 2015; 212: 1711–1718.](http://paperpile.com/b/hiHlId/XCUy)
+
+24\. 	[Hall CB, Weinberg GA, Iwane MK, et al. The burden of respiratory syncytial virus infection in young children. *N Engl J Med* 2009; 360: 588–598.](http://paperpile.com/b/hiHlId/s2Ge)
+
+25\. 	[Shi T, McAllister DA, O’Brien KL, et al. Global, regional, and national disease burden estimates of acute lower respiratory infections due to respiratory syncytial virus in young children in 2015: a systematic review and modelling study. *Lancet* 2017; 390: 946–958.](http://paperpile.com/b/hiHlId/2Q46)
+
+26\. 	[Wildenbeest JG, Billard M-N, Zuurbier RP, et al. The burden of respiratory syncytial virus in healthy term-born infants in Europe: a prospective birth cohort study. *Lancet Respir Med* 2023; 11: 341–353.](http://paperpile.com/b/hiHlId/baTR)
+
