@@ -7,7 +7,7 @@
 ---
 
 <button onclick="window.location.href='#list-of-available-models';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
-List of Available Models
+Go To List of Available Models
 </button>
 
 ---
@@ -32,11 +32,99 @@ In this tool, we aim to provide a range of models to fit to different policy mak
 
 ##### **Generalist Models**
 
-* [Respiratory Viral Pathogen](apps/npi)
+<button onclick="window.location.href='apps/npi';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
+Respiratory Viral Pathogen
+</button>
+<button onclick="window.location.href='';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
+Food and Water Transmission Route
+</button>
+<button onclick="window.location.href='';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
+Vector-borne
+</button>
+<button onclick="window.location.href='';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
+Physical Contact Transmission
+</button>
+<button onclick="window.location.href='';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
+Sexual or Blood-borne
+</button>
+
 
 ##### **Tailored Models**
 
-* To be added
+###### **Respiratory Viral Pathogens**
+
+<button onclick="window.location.href='apps/sars-cov-1';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+SARS-CoV-1
+</button>
+
+<button onclick="window.location.href='apps/rsv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+RSV
+</button>
+
+<button onclick="window.location.href='apps/influenza';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Influenza
+</button>
+
+<button onclick="window.location.href='apps/sars-cov-2';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+SARS-CoV-2
+</button>
+
+###### **Food and Water Transmission Route**
+
+<button onclick="window.location.href='apps/cholera';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Cholera
+</button>
+
+<button onclick="window.location.href='apps/norovirus';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Norovirus
+</button>
+
+<button onclick="window.location.href='apps/e-coli';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+E. coli
+</button>
+
+<button onclick="window.location.href='apps/hepatitis-a';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Hepatitis A
+</button>
+
+###### **Vector-borne**
+
+<button onclick="window.location.href='apps/dengue';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Dengue
+</button>
+
+<button onclick="window.location.href='apps/zika';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Zika
+</button>
+
+<button onclick="window.location.href='apps/lyme-disease';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Lyme Disease
+</button>
+
+###### **Physical Contact Transmission**
+
+<button onclick="window.location.href='apps/dengue';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Scabies
+</button>
+
+<button onclick="window.location.href='apps/zika';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Monkeypox (Mpox)
+</button>
+
+##### Sexual or Blood-born
+
+<button onclick="window.location.href='apps/hiv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Human Immunodeficiency Virus (HIV)
+</button>
+
+<button onclick="window.location.href='apps/hpv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Human Papillomavirus (HPV)
+</button>
+
+<button onclick="window.location.href='apps/hepatitis-b';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
+Hepatitis B
+</button>
+
 
 ### **Guide on how to use infectious disease models**
 
@@ -53,8 +141,10 @@ Infectious disease models are designed to mirror the specific biological and epi
 |   **Proportion of Asymptomatic Infections**    |                              The percentage of infected individuals who do not show symptoms but can still transmit the pathogen. This affects the overall transmission dynamics and may complicate control measures.                               |
 |         **Severity by Age (IHR/IFR)**          |         Infection Hospitalisation Rate (IHR) and Infection Fatality Rate (IFR) describe the likelihood of an individual requiring hospital care or dying from the infection, often varying by age group and other individual risk factors.          |
 
-### **5. Guide on how to use the modelling interface?**
+### **Guide on how to use the modelling interface**
+
+This interface is built using a combination of R packages developed by the Reside group at Imperial College London. The underlying tool, `wodin`, allows users to conduct exploratory analysis of compartmental models. Please use the link below to access more information on how to navigate the tool. 
 
 <button onclick="window.location.href='#list-of-available-models';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
-Intro to wodin to be added!
+Introduction to using the wodin interface
 </button>
