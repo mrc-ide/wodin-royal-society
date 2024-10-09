@@ -1,4 +1,8 @@
-<h2 align="center">**Using infectious disease models to support decisions on non-pharmaceutical interventions (NPIs) implementation in managing future pathogens with pandemic potential**</h2>
+<h2 align="center">
+
+**Using infectious disease models to support decisions on non-pharmaceutical interventions (NPIs) implementation in managing future pathogens with pandemic potential**
+
+</h2>
 
 ### **1. Aim of infectious disease modelling**
 
@@ -35,7 +39,7 @@ One of the fundamental parameters is the basic reproduction number, or R₀, whi
 
 ### **5. Epidemiological Parameterisation for COVID-19**
 
-To effectively model the spread and impact of a specific pathogen, it is necessary to gather and analyse a variety of data sources. For a comprehensive understanding, these can include linelist data, which provides case-by-case information on infected individuals; clinical symptom data, which captures the spectrum of illness experienced by those infected; case numbers, reflecting the scale and growth of the outbreak; and infection outcome data, detailing the progression of disease and rates of recovery or mortality. These diverse sources are used to parameterise models, ensuring that they accurately represent the biological and epidemiological features of the disease.
+To effectively model the spread and impact of a specific pathogen, it is necessary to gather and analyse a variety of data sources. For a comprehensive understanding, these can include line-list data, which provides case-by-case information on infected individuals; clinical symptom data, which captures the spectrum of illness experienced by those infected; case numbers, reflecting the scale and growth of the outbreak; and infection outcome data, detailing the progression of disease and rates of recovery or mortality. These diverse sources are used to parametrise models, ensuring that they accurately represent the biological and epidemiological features of the disease.
 
 In the case of COVID-19, the parameterisation process was dynamic and continuously refined as new data emerged throughout the pandemic. Early on, estimates were based on initial observations from outbreaks in China and other countries, and these parameters evolved over time as more data became available and the scientific understanding of the virus deepened. This iterative process was crucial for maintaining model accuracy in predicting the spread and informing public health strategies.
 
