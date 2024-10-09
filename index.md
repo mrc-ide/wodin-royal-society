@@ -1,22 +1,22 @@
-<h3 align="center">
+<h3 align="center" style="padding: 30px 20px 20px 20px; color: #d31346;  margin-top: 20px">
 
 **Infectious disease models to support decisions on non-pharmaceutical interventions (NPIs) for future pathogens with pandemic potential**
 
 </h3>
 
----
+<hr style="border:2px solid gray">
 
 This tool is designed to help users explore the potential impacts of non-pharmaceutical interventions (NPIs) on the spread of a future pandemic threat. The tool provides various mathematical models for exploring the impact of NPIs on different types of infectious diseases. The tool provides a framework for exploring how the transmission dynamics for different pathogen types determine the effectiveness of NPIs to control the spread of a future pathogen with pandemic potential. When using the tool, you should adjust parameters thoughtfully to fit the pathogen of interest. While the tool provides a foundation for understanding the potential effects of NPIs, it will not be able to account for every real-world variable and should only be used to guide decisions and further understanding on the impact of NPIs on the spread of an emerging infectious disease threat.
 
----
-
+<!-- 
 <div style="text-align: center;">
 <button onclick="window.location.href='#generalist-models';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
 Go To List of Available Models
 </button>
 </div>
+-->
 
-<hr style="border:2px solid gray">
+---
 
 ### **Aim of infectious disease modelling**
 
