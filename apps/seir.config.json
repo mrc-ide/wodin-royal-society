@@ -2,7 +2,7 @@
     "appType": "basic",
     "title": "Modelling NPIs",
     "basicProp": "",
-    "readOnlyCode": true
+    "readOnlyCode": true,
     "help": {
         "tabName": "Explanation",
     }
