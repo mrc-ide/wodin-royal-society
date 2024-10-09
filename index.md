@@ -32,7 +32,7 @@ In this tool, we aim to provide a range of models to fit to different policy mak
 
 ##### **Generalist Models**
 
-<button onclick="window.location.href='apps/npi';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
+<button onclick="window.location.href='apps/viral_respiratory';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
 Respiratory Viral Pathogen
 </button>
 <button onclick="window.location.href='';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
