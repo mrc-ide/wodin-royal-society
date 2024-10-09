@@ -394,20 +394,25 @@ on the population.</p>
 </div>
 <div id="what-are-infectious-disease-models" class="section level3">
 <h3><strong>What are infectious disease models?</strong></h3>
-<p>The framework of infectious disease models is built upon assumptions
+<p>Infectious disease models are built upon a framework of assumptions
 about how individuals move through different stages of infection and how
 they interact with others in a population. These models aim to capture
 the transition of individuals between health states – such as being
-susceptible to infection, becoming infected, and eventually recovering
-or remaining infectious – and to represent how these transitions
-contribute to the overall spread of the disease. The models use these
-assumptions to describe and predict the dynamics of an outbreak,
+susceptible to infection, becoming infected (and therefore infectious to
+others), before either recovering or experiencing more severe outcomes,
+such as hospitaliation and/or death. The models represent how these
+individual transitions between health states contribute to the overall
+spread of the disease; at every point in an epidemic, the number of new
+infections that occur is determined by: the current number of infectious
+individuals, the current number that are susceptible to infection, and
+the way that these populations interact with each other. The models use
+these assumptions to describe and predict the dynamics of an outbreak,
 allowing public health officials to understand how an infectious disease
 progresses over time within a community.</p>
 <p>In addition to understanding disease dynamics, models are powerful
 tools for assessing the potential impact of interventions. They can be
 used to simulate a variety of non-pharmaceutical interventions (NPIs),
-such as social distancing, isolation, and quarantine, and their effects
+such as social distancing, shielding, and quarantine, and their effects
 on disease spread. For example, models help to determine how effective
 isolating symptomatic individuals might be in reducing transmission, or
 how measures like lockdowns that reduce social contact can slow the rate
@@ -420,7 +425,7 @@ diseases.</p>
 <h3><strong>What models are available in this tool?</strong></h3>
 <p>Infectious disease models are designed to mirror the specific
 biological and epidemiological characteristics of the pathogen that they
-model. Due to these different characteristics, a specific infectious
+model. Due to these different characteristics, a tailored infectious
 disease model is often needed to accurately capture the dynamics of the
 pathogen. Further, depending on the needs of the policy maker, often
 variations and increased complexity is needed to meet these needs, for
@@ -430,7 +435,7 @@ are many different infectious disease models available in the
 literature, however, often these share common compartments and
 themes.</p>
 <p>In this tool, we aim to provide a range of models to fit to different
-policy makers needs. This will include providing specific models, which
+policy makers’ needs. This will include providing specific models, which
 are tailored for a particular pathogen or range of NPIs
 (<strong>Tailored Models</strong>). Alternatively, often pathogens can
 be grouped in terms of their method of transmission (viral respiratory,
@@ -443,7 +448,7 @@ Models</strong>).</p>
 <div id="generalist-models" class="section level5">
 <h5><strong>Generalist Models:</strong></h5>
 <button onclick="window.location.href=&#39;apps/viral_respiratory&#39;;" style="background: aliceblue; border-radius: 5px; border-color: azure">
-Respiratory Viral Pathogen
+Respiratory Transmission
 </button>
 <button onclick="window.location.href=&#39;&#39;;" style="background: aliceblue; border-radius: 5px; border-color: azure">
 Food and Water Transmission Route
@@ -534,51 +539,52 @@ most commonly relevant for infectious disase modelling.</p>
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">Parameter</th>
-<th align="center">Definition</th>
+<th align="right">Parameter</th>
+<th align="left">Definition</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><strong>R<sub>0</sub> (Basic Reproduction
+<td align="right"><strong>R<sub>0</sub> (Basic Reproduction
 Number)</strong></td>
-<td align="center">Measures how contagious a pathogen is by indicating
+<td align="left">Measures how transmissible a pathogen is by indicating
 the average number of secondary infections caused by one infected
 individual in a fully susceptible population. A higher R<sub>0</sub>
 implies greater transmissibility.</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>Incubation Period</strong></td>
-<td align="center">The time between exposure to the pathogen and the
-onset of symptoms. This period determines how quickly a pathogen spreads
-and can influence how long an individual is infectious before symptoms
+<td align="right"><strong>Incubation Period</strong></td>
+<td align="left">The time between exposure to the pathogen and the onset
+of symptoms. This period determines how quickly a pathogen spreads and
+can influence how long an individual is infectious before symptoms
 develop.</td>
 </tr>
 <tr class="odd">
-<td align="center"><strong>Symptomatic Period</strong></td>
-<td align="center">The duration during which an infected individual
+<td align="right"><strong>Symptomatic Period</strong></td>
+<td align="left">The duration during which an infected individual
 exhibits symptoms of the disease. The length of this period can affect
 the likelihood of identifying and isolating cases, influencing the
 success of control measures.</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>Percentage of Incubation Period
+<td align="right"><strong>Percentage of Incubation Period
 Infectious</strong></td>
-<td align="center">The proportion of the incubation period during which
-an infected person is capable of transmitting the pathogen. This is
+<td align="left">The proportion of the incubation period during which an
+infected person is capable of transmitting the pathogen. This is
 critical for understanding the potential for pre-symptomatic
 transmission and designing effective intervention strategies.</td>
 </tr>
 <tr class="odd">
-<td align="center"><strong>Proportion of Asymptomatic
+<td align="right"><strong>Proportion of Asymptomatic
 Infections</strong></td>
-<td align="center">The percentage of infected individuals who do not
-show symptoms but can still transmit the pathogen. This affects the
-overall transmission dynamics and may complicate control measures.</td>
+<td align="left">The percentage of infected individuals who do not show
+symptoms but can still transmit the pathogen. This affects the overall
+transmission dynamics and may make it harder to control the
+epidemic.</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>Severity by Age (IHR/IFR)</strong></td>
-<td align="center">Infection Hospitalisation Rate (IHR) and Infection
+<td align="right"><strong>Severity by Age (IHR/IFR)</strong></td>
+<td align="left">Infection Hospitalisation Rate (IHR) and Infection
 Fatality Rate (IFR) describe the likelihood of an individual requiring
 hospital care or dying from the infection, often varying by age group
 and other individual risk factors.</td>
