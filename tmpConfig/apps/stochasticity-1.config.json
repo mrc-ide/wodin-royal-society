@@ -1,8 +1,0 @@
-{
-    "appType": "stochastic",
-    "title": "Stochasticity: Birth",
-    "readOnlyCode": true,
-    "help": {
-        "tabName": "Explanation"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "appType": "stochastic",
-    "title": "Stochasticity: SIR",
-    "readOnlyCode": true,
-    "help": {
-        "tabName": "Explanation"
-    }
-}
