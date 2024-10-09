@@ -1,0 +1,10 @@
+{
+    "appType": "basic",
+    "title": "Modelling Viral Respiratory Pathogen NPIs",
+    "basicProp": "",
+    "readOnlyCode": true,
+    "multiSensitivity": true,
+    "help": {
+        "tabName": "Explanation",
+    }
+}
