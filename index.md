@@ -51,79 +51,12 @@ Sexual or Blood-borne
 
 ##### **Tailored Models**
 
-###### **Respiratory Viral Pathogens**
-
-<button onclick="window.location.href='apps/sars-cov-1';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-SARS-CoV-1
-</button>
-
-<button onclick="window.location.href='apps/rsv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-RSV
-</button>
-
-<button onclick="window.location.href='apps/influenza';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Influenza
-</button>
-
-<button onclick="window.location.href='apps/sars-cov-2';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-SARS-CoV-2
-</button>
-
-###### **Food and Water Transmission Route**
-
-<button onclick="window.location.href='apps/cholera';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Cholera
-</button>
-
-<button onclick="window.location.href='apps/norovirus';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Norovirus
-</button>
-
-<button onclick="window.location.href='apps/e-coli';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-E. coli
-</button>
-
-<button onclick="window.location.href='apps/hepatitis-a';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Hepatitis A
-</button>
-
-###### **Vector-borne**
-
-<button onclick="window.location.href='apps/dengue';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Dengue
-</button>
-
-<button onclick="window.location.href='apps/zika';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Zika
-</button>
-
-<button onclick="window.location.href='apps/lyme-disease';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Lyme Disease
-</button>
-
-###### **Physical Contact Transmission**
-
-<button onclick="window.location.href='apps/dengue';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Scabies
-</button>
-
-<button onclick="window.location.href='apps/zika';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Monkeypox (Mpox)
-</button>
-
-##### Sexual or Blood-born
-
-<button onclick="window.location.href='apps/hiv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Human Immunodeficiency Virus (HIV)
-</button>
-
-<button onclick="window.location.href='apps/hpv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Human Papillomavirus (HPV)
-</button>
-
-<button onclick="window.location.href='apps/hepatitis-b';" style="background: aliceblue; border-radius: 5px; border-color: azure;">
-Hepatitis B
-</button>
+| **Respiratory Viral Pathogens** | **Food and Water Transmission Route** | **Vector-borne** | **Physical Contact Transmission** | **Sexual or Blood-borne** |
+|:-------------------------------:|:--------------------------------------:|:----------------:|:----------------------------------:|:--------------------------:|
+| <button onclick="window.location.href='apps/sars-cov-1';" style="background: aliceblue; border-radius: 5px; border-color: azure;">SARS-CoV-1</button> | <button onclick="window.location.href='apps/cholera';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Cholera</button> | <button onclick="window.location.href='apps/dengue';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Dengue</button> | <button onclick="window.location.href='apps/dengue';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Scabies</button> | <button onclick="window.location.href='apps/hiv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">HIV</button> |
+| <button onclick="window.location.href='apps/rsv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">RSV</button> | <button onclick="window.location.href='apps/norovirus';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Norovirus</button> | <button onclick="window.location.href='apps/zika';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Zika</button> | <button onclick="window.location.href='apps/zika';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Mpox</button> | <button onclick="window.location.href='apps/hpv';" style="background: aliceblue; border-radius: 5px; border-color: azure;">HPV</button> |
+| <button onclick="window.location.href='apps/influenza';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Influenza</button> | <button onclick="window.location.href='apps/e-coli';" style="background: aliceblue; border-radius: 5px; border-color: azure;">E. coli</button> | <button onclick="window.location.href='apps/lyme-disease';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Lyme Disease</button> |  | <button onclick="window.location.href='apps/hepatitis-b';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Hepatitis B</button> |
+| <button onclick="window.location.href='apps/sars-cov-2';" style="background: aliceblue; border-radius: 5px; border-color: azure;">SARS-CoV-2</button> | <button onclick="window.location.href='apps/hepatitis-a';" style="background: aliceblue; border-radius: 5px; border-color: azure;">Hepatitis A</button> |  |  |  |
 
 
 ### **Guide on how to use infectious disease models**

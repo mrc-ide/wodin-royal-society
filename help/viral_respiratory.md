@@ -21,9 +21,9 @@ Infectious disease models are designed to mirror the specific biological and epi
 ---
 
 |Model Code |Parameter | Definition                                      |
-|----------|----------|------------------------------------------------------------|
+|:---------:|:--------:|:----------------------------------------------------------:|
 | **A0** | **Importation Rate** | The rate at which new cases of a disease are introduced into a population from external sources, such as international travel or movement between regions. The importation rate will determine the need for interventions like border controls or quarantines. |
-| **A1** | **R0 (Basic Reproduction Number)** | The average number of secondary infections caused by one infected individual in a fully susceptible population. A higher R0 implies a more contagious pathogen with greater transmissibility. |
+| **A1** | **R<sub>0</sub> (Basic Reproduction Number)** | The average number of secondary infections caused by one infected individual in a fully susceptible population. A higher R<sub>0</sub> implies a more contagious pathogen with greater transmissibility. |
 | **A2** | **Incubation Period** | The time between exposure to the pathogen and the onset of symptoms. This period determines how quickly a pathogen spreads and the duration of self-isolation policies after infectious contact.  |
 | **A3** | **Percentage of Incubation Period Infectious** | The proportion of the incubation period during which an infected person is capable of transmitting the pathogen. This is critical for designing intervention policies and the need for diagnostic testing. |
 | **A4** | **Proportion of Asymptomatic Infections** | The percentage of infected individuals who do not show symptoms but can still transmit the pathogen. This affects the overall transmission dynamics and the need for diagnostic testing.  |
@@ -36,11 +36,11 @@ Different pathogens have distinct characteristics in terms of transmission dynam
 
 ---
 
-| Pathogen | R0 | Incubation Period | Symptomatic Period | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR | IHR |
+| Pathogen | R<sub>0</sub> | Incubation Period | Symptomatic Period | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR | IHR |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **SARS-1** | \~2-3[1](https://paperpile.com/c/hiHlId/NJJA) | \~4-6 days[2](https://paperpile.com/c/hiHlId/Fnf6) | \~7-21 days[3,4](https://paperpile.com/c/hiHlId/cIuN+gb52) | \~0-10%[1](https://paperpile.com/c/hiHlId/NJJA) | \<5%[5](https://paperpile.com/c/hiHlId/NaVF) | \~9-15%[6](https://paperpile.com/c/hiHlId/u9dP) | \~100%[7](https://paperpile.com/c/hiHlId/38R0) |
-| **Influenza** | \~1-2[8](https://paperpile.com/c/hiHlId/ohLi) | \~1-4 days[9](https://paperpile.com/c/hiHlId/IMKs) | \~3-7 days[10](https://paperpile.com/c/hiHlId/WldU) | \~25-50%[11](https://paperpile.com/c/hiHlId/wEVP) | \~15-75%\*[12,13](https://paperpile.com/c/hiHlId/iMpN+asay) | \~0.01 \- 0.1%\*\* [14,15](https://paperpile.com/c/hiHlId/Dq5a+7lIk) | \~0.0002% \- 0.0007%[16](https://paperpile.com/c/hiHlId/RMuY) |
-| **RSV** | \~1-3[17,18](https://paperpile.com/c/hiHlId/nxC6+IHiv) | \~3-6 days[17,19](https://paperpile.com/c/hiHlId/nxC6+Uf8c) | \~7-12 days [20,21](https://paperpile.com/c/hiHlId/aLCv+6zlW) | \~0-10%[22](https://paperpile.com/c/hiHlId/99dX)  | \~20-40%\*\*\*[23,24](https://paperpile.com/c/hiHlId/XCUy+s2Ge) | \<0.1%[25](https://paperpile.com/c/hiHlId/2Q46) | \~1-3%\*\*\*[26](https://paperpile.com/c/hiHlId/baTR) |
+| **SARS-1** | \~2-3[^1] | \~4-6 days[^2] | \~7-21 days[^3]<sup>,</sup>[^4] | \~0-10%[^1] | \<5%[^5] | \~9-15%[^6] | \~100%[^7] |
+| **Influenza** | \~1-2[^8] | \~1-4 days[^9] | \~3-7 days[^10] | \~25-50%[^11] | \~15-75%\*[^12]<sup>,</sup>[^13] | \~0.01 \- 0.1%\*\* [^14]<sup>,</sup>[^15] | \~0.0002% \- 0.0007%[^16] |
+| **RSV** | \~1-3[^17]<sup>,</sup>[^18] | \~3-6 days[^17]<sup>,</sup>[^19] | \~7-12 days [^20]<sup>,</sup>[^21] | \~0-10%[^22]  | \~20-40%\*\*\*[^23]<sup>,</sup>[^24] | \<0.1%[^25] | \~1-3%\*\*\*[^26] |
 
 \* Varies by strain and study  
 \*\* 1918 H1N1 IFR \~2%  
@@ -48,7 +48,7 @@ Different pathogens have distinct characteristics in terms of transmission dynam
 
 ---
 
-These parameters illustrate the differences in transmission dynamics and severity across pathogens, and help understand how to design appropriate public health strategies. For example, SARS-1 could be effectively controlled through isolating symptomatic individuals due to the limited pre-symptomatic transmission. On the other hand, influenza’s shorter incubation period and higher pre-symptomatic transmission requires broader interventions to reduce spread. RSV's higher R0, in combination with increased rates of pre-symptomatic transmission amongst children necessitates targeted paediatric responses. The combination of each parameter will determine how difficult the spread of the pathogen is to control.
+These parameters illustrate the differences in transmission dynamics and severity across pathogens, and help understand how to design appropriate public health strategies. For example, SARS-1 could be effectively controlled through isolating symptomatic individuals due to the limited pre-symptomatic transmission. On the other hand, influenza’s shorter incubation period and higher pre-symptomatic transmission requires broader interventions to reduce spread. RSV's higher R<sub>0</sub>, in combination with increased rates of pre-symptomatic transmission amongst children necessitates targeted paediatric responses. The combination of each parameter will determine how difficult the spread of the pathogen is to control.
 
 ### **A.2. How To Choose Disease Transmission Parameters**
 
@@ -79,7 +79,7 @@ The impact that each NPI will have depends on a number of factors (the severity 
 |  |  | Respiratory Etiquette | 15% | 2021 NHS Scotland Literature Review |
 |  | Community Measures | Physical Distancing | 15% | Murphy et al., 2023 Review |
 |  |  | Encouraging Outdoor Meetings | 25% | Murphy et al., 2023 Review |
-| **Reducing contact rates for specific age groups** | Community Measures | Lockdowns (Partial \- Full)\* | 30-80% | Davies et al., 2020; Flaxman et al., 2020 |
+| **Reducing contact rates for specific age groups** | Community Measures | Lockdowns (Partial \- Full) | 30-80% | Davies et al., 2020; Flaxman et al., 2020 |
 |  |  | School Measures and Closures | 20% | Murphy et al., 2023 Review |
 |  |  | Work at home orders | 25% | Beck et al 2020 |
 |  |  | Public Event Cancellations | 25% | Brauner et al 2021 |
@@ -97,27 +97,27 @@ The impact that each NPI will have depends on a number of factors (the epidemiol
 
 The default NPI parameters in the tool are set to 0 to reflect an unmitigated epidemic. When using this tool to model the impact of NPI, you need to choose parameters that reflect the total impact of NPIs in each of the four intervention categories. To help users understand how to choose these values, we have provided a worked example to reflect the implementation of the following NPI interventions and possible parameter values for the tool:
 
-* Work-from home order \- 60% of workforce able to work-from home:  
+* **Work-from home order** \- 60% of workforce able to work-from home:  
   - Assumed 25% reduction in transmission for those who can work from home  
   - B2b set equal to 0.15 (60% of 25% effect)
 
-* School closures \- 20% of school-aged individuals still interact with other children:  
+* **School closures** \- 20% of school-aged individuals still interact with other children:  
   - Assumed 20% reduction in transmission amongst children  
   - B2a set equal to 0.16 (80% of 20% effect)
 
-* Mask mandate \- 50% of population adhere to mask mandate:  
+* **Mask mandate** \- 50% of population adhere to mask mandate:  
   - Assumed 20% reduction in transmission amongst all contacts  
   - B1 set equal to 0.1 (50% of 20% effect)
 
-* Symptomatic cases to self-isolate \- 50% of symptomatic cases adhere to policy:  
+* **Symptomatic cases to self-isolate** \- 50% of symptomatic cases adhere to policy:  
   - Assumed 25% reduction in transmission amongst all contacts  
   - B3a set equal to 0.125 (50% of 25% effect)
 
-* Border controls \- Only 80% of incoming travel is impacted:  
+* **Border controls** \- Only 80% of incoming travel is impacted:  
   - Assumed 20% reduction in importations  
   - B4 set equal to 0.16 (80% of 20% effect)
 
-* NPI delay \-  NPIs implemented 14 days after the first hospitalisation with severe disease:  
+* **NPI delay** \-  NPIs implemented 14 days after the first hospitalisation with severe disease:  
   - B5 set equal to 14
 
 The suite of interventions above was chosen as the impact of each intervention will mostly affect one component of transmission. However, introduction of the above suite of interventions is likely to change human behaviour more broadly. For example, individuals may change their personal behaviours to reduce their own risk, especially if the suite of interventions conveys that the pathogen threat is serious. As a result there may be a greater reduction in transmission amongst contacts. Alternatively, individuals may show lower adherence with these interventions given that the epidemic is in its early stages and there have been limited hospitalisations and deaths.
@@ -128,55 +128,29 @@ Ultimately, deciding on the correct parameters is not the aim when using this to
 
 ### **References** 
 
-1\. 	[Lipsitch M, Cohen T, Cooper B, et al. Transmission dynamics and control of severe acute respiratory syndrome. *Science* 2003; 300: 1966–1970.](http://paperpile.com/b/hiHlId/NJJA)
-
-2\. 	[Donnelly CA, Ghani AC, Leung GM, et al. Epidemiological determinants of spread of causal agent of severe acute respiratory syndrome in Hong Kong. *Lancet* 2003; 361: 1761–1766.](http://paperpile.com/b/hiHlId/Fnf6)
-
-3\. 	[Peiris JSM, Lai ST, Poon LLM, et al. Coronavirus as a possible cause of severe acute respiratory syndrome. *Lancet* 2003; 361: 1319–1325.](http://paperpile.com/b/hiHlId/cIuN)
-
-4\. 	[Lee N, Hui D, Wu A, et al. A major outbreak of severe acute respiratory syndrome in Hong Kong. *N Engl J Med* 2003; 348: 1986–1994.](http://paperpile.com/b/hiHlId/gb52)
-
-5\. 	[Leung GM, Hedley AJ, Ho L-M, et al. The epidemiology of severe acute respiratory syndrome in the 2003 Hong Kong epidemic: an analysis of all 1755 patients. *Ann Intern Med* 2004; 141: 662–673.](http://paperpile.com/b/hiHlId/NaVF)
-
-6\. 	[World Health Organization. *Consensus document on the epidemiology of severe acute respiratory syndrome (‎SARS)‎*. WHO/CDS/CSR/GAR/2003.11, World Health Organization,](http://paperpile.com/b/hiHlId/u9dP) [https://iris.who.int/handle/10665/70863](https://iris.who.int/handle/10665/70863) [(2003, accessed 8 October 2024).](http://paperpile.com/b/hiHlId/u9dP)
-
-7\. 	[Severe Acute Respiratory Syndrome \--- Taiwan, 2003,](http://paperpile.com/b/hiHlId/38R0) [https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm](https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm) [(2003, accessed 8 October 2024).](http://paperpile.com/b/hiHlId/38R0)
-
-8\. 	[Biggerstaff M, Cauchemez S, Reed C, et al. Estimates of the reproduction number for seasonal, pandemic, and zoonotic influenza: a systematic review of the literature. *BMC Infect Dis* 2014; 14: 480\.](http://paperpile.com/b/hiHlId/ohLi)
-
-9\. 	[Lessler J, Reich NG, Brookmeyer R, et al. Incubation periods of acute respiratory viral infections: a systematic review. *Lancet Infect Dis* 2009; 9: 291–300.](http://paperpile.com/b/hiHlId/IMKs)
-
-10\. 	[Carrat F, Vergu E, Ferguson NM, et al. Time lines of infection and disease in human influenza: a review of volunteer challenge studies. *Am J Epidemiol* 2008; 167: 775–785.](http://paperpile.com/b/hiHlId/WldU)
-
-11\. 	[Cowling BJ, Chan KH, Fang VJ, et al. Comparative epidemiology of pandemic and seasonal influenza A in households. *N Engl J Med* 2010; 362: 2175–2184.](http://paperpile.com/b/hiHlId/wEVP)
-
-12\. 	[Hayward AC, Fragaszy EB, Bermingham A, et al. Comparative community burden and severity of seasonal and pandemic influenza: results of the Flu Watch cohort study. *Lancet Respir Med* 2014; 2: 445–454.](http://paperpile.com/b/hiHlId/iMpN)
-
-13\. 	[Leung NHL, Xu C, Ip DKM, et al. Review article: The fraction of influenza virus infections that are asymptomatic: A systematic review and meta-analysis. *Epidemiology* 2015; 26: 862–872.](http://paperpile.com/b/hiHlId/asay)
-
-14\. 	[Paget J, Spreeuwenberg P, Charu V, et al. Global mortality associated with seasonal influenza epidemics: New burden estimates and predictors from the GLaMOR Project. *J Glob Health* 2019; 9: 020421\.](http://paperpile.com/b/hiHlId/Dq5a)
-
-15\. 	[World Health Assembly. *Implementation of the International Health Regulations (‎2005)‎: report of the Review Committee on the Functioning of the International Health Regulations (‎2005)‎ in relation to Pandemic (‎H1N1)‎ 2009: report by the Director-General*. A64/10, World Health Organization,](http://paperpile.com/b/hiHlId/7lIk) [https://iris.who.int/handle/10665/3350](https://iris.who.int/handle/10665/3350) [(2011, accessed 8 October 2024).](http://paperpile.com/b/hiHlId/7lIk)
-
-16\. 	[Paget J, Staadegaard L, Wang X, et al. Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions. *J Glob Health* 2023; 13: 04003\.](http://paperpile.com/b/hiHlId/RMuY)
-
-17\. 	[Wang X, Li Y, Shi T, et al. Global disease burden of and risk factors for acute lower respiratory infections caused by respiratory syncytial virus in preterm infants and young children in 2019: a systematic review and meta-analysis of aggregated and individual participant data. *Lancet* 2024; 403: 1241–1253.](http://paperpile.com/b/hiHlId/nxC6)
-
-18\. 	[Reis J, Shaman J. Retrospective parameter estimation and forecast of respiratory syncytial virus in the United States. *PLoS Comput Biol* 2016; 12: e1005133.](http://paperpile.com/b/hiHlId/IHiv)
-
-19\. 	[Welliver RC. Review of epidemiology and clinical risk factors for severe respiratory syncytial virus (RSV) infection. *J Pediatr* 2003; 143: S112–7.](http://paperpile.com/b/hiHlId/Uf8c)
-
-20\. 	[Hall CB. Respiratory syncytial virus and parainfluenza virus. *N Engl J Med* 2001; 344: 1917–1928.](http://paperpile.com/b/hiHlId/aLCv)
-
-21\. 	[Munywoki PK, Koech DC, Agoti CN, et al. Influence of age, severity of infection, and co-infection on the duration of respiratory syncytial virus (RSV) shedding. *Epidemiol Infect* 2015; 143: 804–812.](http://paperpile.com/b/hiHlId/6zlW)
-
-22\. 	[Hall CB, Douglas RG Jr, Schnabel KC, et al. Infectivity of respiratory syncytial virus by various routes of inoculation. *Infect Immun* 1981; 33: 779–783.](http://paperpile.com/b/hiHlId/99dX)
-
-23\. 	[Munywoki PK, Koech DC, Agoti CN, et al. Frequent asymptomatic respiratory syncytial virus infections during an epidemic in a rural Kenyan household cohort. *J Infect Dis* 2015; 212: 1711–1718.](http://paperpile.com/b/hiHlId/XCUy)
-
-24\. 	[Hall CB, Weinberg GA, Iwane MK, et al. The burden of respiratory syncytial virus infection in young children. *N Engl J Med* 2009; 360: 588–598.](http://paperpile.com/b/hiHlId/s2Ge)
-
-25\. 	[Shi T, McAllister DA, O’Brien KL, et al. Global, regional, and national disease burden estimates of acute lower respiratory infections due to respiratory syncytial virus in young children in 2015: a systematic review and modelling study. *Lancet* 2017; 390: 946–958.](http://paperpile.com/b/hiHlId/2Q46)
-
-26\. 	[Wildenbeest JG, Billard M-N, Zuurbier RP, et al. The burden of respiratory syncytial virus in healthy term-born infants in Europe: a prospective birth cohort study. *Lancet Respir Med* 2023; 11: 341–353.](http://paperpile.com/b/hiHlId/baTR)
-
+[^1]: Lipsitch M, Cohen T, Cooper B, et al. Transmission dynamics and control of severe acute respiratory syndrome. Science 2003;300(5627):1966–1970; doi: [10.1126/science.1086616](http://dx.doi.org/10.1126/science.1086616)
+[^2]: Donnelly CA, Ghani AC, Leung GM, et al. Epidemiological determinants of spread of causal agent of severe acute respiratory syndrome in Hong Kong. Lancet 2003;361(9371):1761–1766; doi: [10.1016/S0140-6736(03)13410-1](http://dx.doi.org/10.1016/S0140-6736\(03\)13410-1)
+[^3]: Peiris JSM, Lai ST, Poon LLM, et al. Coronavirus as a possible cause of severe acute respiratory syndrome. Lancet 2003;361(9366):1319–1325; doi: [10.1016/s0140-6736(03)13077-2](http://dx.doi.org/10.1016/s0140-6736\(03\)13077-2)
+[^4]: Lee N, Hui D, Wu A, et al. A major outbreak of severe acute respiratory syndrome in Hong Kong. N Engl J Med 2003;348(20):1986–1994; doi: [10.1056/NEJMoa030685](http://dx.doi.org/10.1056/NEJMoa030685)
+[^5]: Leung GM, Hedley AJ, Ho L-M, et al. The epidemiology of severe acute respiratory syndrome in the 2003 Hong Kong epidemic: an analysis of all 1755 patients. Ann Intern Med 2004;141(9):662–673; doi: [10.7326/0003-4819-141-9-200411020-00006](http://dx.doi.org/10.7326/0003-4819-141-9-200411020-00006)
+[^6]: World Health Organization. Consensus Document on the Epidemiology of Severe Acute Respiratory Syndrome (‎SARS)‎. World Health Organization; 2003\.]
+[^7]: Severe Acute Respiratory Syndrome \--- Taiwan, 2003\. 2003\. Available from:] [https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm](https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm) (Last accessed: 10/8/2024)
+[^8]: Biggerstaff M, Cauchemez S, Reed C, et al. Estimates of the reproduction number for seasonal, pandemic, and zoonotic influenza: a systematic review of the literature. BMC Infect Dis 2014;14(1):480; doi: [10.1186/1471-2334-14-480](http://dx.doi.org/10.1186/1471-2334-14-480)
+[^9]: Lessler J, Reich NG, Brookmeyer R, et al. Incubation periods of acute respiratory viral infections: a systematic review. Lancet Infect Dis 2009;9(5):291–300; doi: [10.1016/S1473-3099(09)70069-6](http://dx.doi.org/10.1016/S1473-3099\(09\)70069-6)
+[^10]: Carrat F, Vergu E, Ferguson NM, et al. Time lines of infection and disease in human influenza: a review of volunteer challenge studies. Am J Epidemiol 2008;167(7):775–785; doi: [10.1093/aje/kwm375](http://dx.doi.org/10.1093/aje/kwm375)
+[^11]: Cowling BJ, Chan KH, Fang VJ, et al. Comparative epidemiology of pandemic and seasonal influenza A in households. N Engl J Med 2010;362(23):2175–2184; doi: [10.1056/NEJMoa0911530](http://dx.doi.org/10.1056/NEJMoa0911530)
+[^12]: Hayward AC, Fragaszy EB, Bermingham A, et al. Comparative community burden and severity of seasonal and pandemic influenza: results of the Flu Watch cohort study. Lancet Respir Med 2014;2(6):445–454; doi: [10.1016/S2213-2600(14)70034-7](http://dx.doi.org/10.1016/S2213-2600\(14\)70034-7)
+[^13]: Leung NHL, Xu C, Ip DKM, et al. Review article: The fraction of influenza virus infections that are asymptomatic: A systematic review and meta-analysis. Epidemiology 2015;26(6):862–872; doi: [10.1097/EDE.0000000000000340](http://dx.doi.org/10.1097/EDE.0000000000000340)
+[^14]: Paget J, Spreeuwenberg P, Charu V, et al. Global mortality associated with seasonal influenza epidemics: New burden estimates and predictors from the GLaMOR Project. J Glob Health 2019;9(2):020421; doi: [10.7189/jogh.09.020421](http://dx.doi.org/10.7189/jogh.09.020421)
+[^15]: World Health Assembly. Implementation of the International Health Regulations (‎2005)‎: Report of the Review Committee on the Functioning of the International Health Regulations (‎2005)‎ in Relation to Pandemic (‎H1N1)‎ 2009: Report by the Director-General. World Health Organization; 2011\.]
+[^16]: Paget J, Staadegaard L, Wang X, et al. Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions. J Glob Health 2023;13(04003):04003; doi: [10.7189/jogh.13.04003](http://dx.doi.org/10.7189/jogh.13.04003)
+[^17]: Wang X, Li Y, Shi T, et al. Global disease burden of and risk factors for acute lower respiratory infections caused by respiratory syncytial virus in preterm infants and young children in 2019: a systematic review and meta-analysis of aggregated and individual participant data. Lancet 2024;403(10433):1241–1253; doi: [10.1016/S0140-6736(24)00138-7](http://dx.doi.org/10.1016/S0140-6736\(24\)00138-7)
+[^18]: Reis J, Shaman J. Retrospective parameter estimation and forecast of respiratory syncytial virus in the United States. PLoS Comput Biol 2016;12(10):e1005133; doi: [10.1371/journal.pcbi.1005133](http://dx.doi.org/10.1371/journal.pcbi.1005133)
+[^19]: Welliver RC. Review of epidemiology and clinical risk factors for severe respiratory syncytial virus (RSV) infection. J Pediatr 2003;143(5 Suppl):S112–7; doi: [10.1067/s0022-3476(03)00508-0](http://dx.doi.org/10.1067/s0022-3476\(03\)00508-0)
+[^20]: Hall CB. Respiratory syncytial virus and parainfluenza virus. N Engl J Med 2001;344(25):1917–1928; doi: [10.1056/NEJM200106213442507](http://dx.doi.org/10.1056/NEJM200106213442507)
+[^21]: Munywoki PK, Koech DC, Agoti CN, et al. Influence of age, severity of infection, and co-infection on the duration of respiratory syncytial virus (RSV) shedding. Epidemiol Infect 2015;143(4):804–812; doi: [10.1017/S0950268814001393](http://dx.doi.org/10.1017/S0950268814001393)
+[^22]: Hall CB, Douglas RG Jr, Schnabel KC, et al. Infectivity of respiratory syncytial virus by various routes of inoculation. Infect Immun 1981;33(3):779–783; doi: [10.1128/iai.33.3.779-783.1981](http://dx.doi.org/10.1128/iai.33.3.779-783.1981)
+[^23]: Munywoki PK, Koech DC, Agoti CN, et al. Frequent asymptomatic respiratory syncytial virus infections during an epidemic in a rural Kenyan household cohort. J Infect Dis 2015;212(11):1711–1718; doi: [10.1093/infdis/jiv263](http://dx.doi.org/10.1093/infdis/jiv263)
+[^24]: Hall CB, Weinberg GA, Iwane MK, et al. The burden of respiratory syncytial virus infection in young children. N Engl J Med 2009;360(6):588–598; doi: [10.1056/NEJMoa0804877](http://dx.doi.org/10.1056/NEJMoa0804877)
+[^25]: Shi T, McAllister DA, O’Brien KL, et al. Global, regional, and national disease burden estimates of acute lower respiratory infections due to respiratory syncytial virus in young children in 2015: a systematic review and modelling study. Lancet 2017;390(10098):946–958; doi: [10.1016/S0140-6736(17)30938-8](http://dx.doi.org/10.1016/S0140-6736\(17\)30938-8)
+[^26]: Wildenbeest JG, Billard M-N, Zuurbier RP, et al. The burden of respiratory syncytial virus in healthy term-born infants in Europe: a prospective birth cohort study. Lancet Respir Med 2023;11(4):341–353; doi: [10.1016/S2213-2600(22)00414-3](http://dx.doi.org/10.1016/S2213-2600\(22\)00414-3)
