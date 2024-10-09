@@ -36,11 +36,11 @@ Different pathogens have distinct characteristics in terms of transmission dynam
 
 ---
 
-| Pathogen | $R_0$ | Incubation Period | Symptomatic Period | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR | IHR |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **SARS-1** | \~2-3 [1] | \~4-6 days [2] | \~7-21 days [3,4] | \~0-10% [1] | \<5% [5] | \~9-15% [6] | \~100% [7] |
-| **Influenza** | \~1-2 [8] | \~1-4 days [9] | \~3-7 days [10] | \~25-50% [11] | \~15-75%\* [12,13] | \~0.01 \- 0.1%\*\*  [14,15] | \~0.0002% \- 0.0007% [16] |
-| **RSV** | \~1-3 [17,18] | \~3-6 days [17,19] | \~7-12 days  [20,21] | \~0-10% [22]  | \~20-40%\*\*\* [23,24] | \<0.1% [25] | \~1-3%\*\*\* [26] |
+| Pathogen    | $R_0$         | Incubation Period   | Symptomatic Period   | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR                  | IHR                  |
+|:-----------:|:-------------:|:-------------------:|:--------------------:|:------------------------------------------:|:------------------------------------:|:--------------------:|:--------------------:|
+| **SARS-1**  | \~2-3 [[1]](#sec-1) | \~4-6 days [[2]](#sec-2) | \~7-21 days [[3,4]](#sec-3) | \~0-10% [[1]](#sec-1)  | \<5% [[5]](#sec-5)  | \~9-15% [[6]](#sec-6)  | \~100% [[7]](#sec-7)  |
+| **Influenza**| \~1-2 [[8]](#sec-8) | \~1-4 days [[9]](#sec-9) | \~3-7 days [[10]](#sec-10) | \~25-50% [[11]](#sec-11) | \~15-75%\* [[12,13]](#sec-12) | \~0.01 - 0.1%\*\* [[14,15]](#sec-14) | \~0.0002% - 0.0007% [[16]](#sec-16) |
+| **RSV**     | \~1-3 [[17,18]](#sec-17) | \~3-6 days [[17,19]](#sec-17) | \~7-12 days [[20,21]](#sec-20) | \~0-10% [[22]](#sec-22)  | \~20-40%\*\*\* [[23,24]](#sec-23) | \<0.1% [[25]](#sec-25)  | \~1-3%\*\*\* [[26]](#sec-26) |
 
 \* Varies by strain and study  
 \*\* 1918 H1N1 IFR \~2%  
@@ -128,53 +128,54 @@ Ultimately, deciding on the correct parameters is not the aim when using this to
 
 ### **References** 
 
-[1]: Lipsitch M, Cohen T, Cooper B, et al. Transmission dynamics and control of severe acute respiratory syndrome. Science 2003;300(5627):1966–1970; doi:  [10.1126/science.1086616](http://dx.doi.org/10.1126/science.1086616)
- 
-[2]: Donnelly CA, Ghani AC, Leung GM, et al. Epidemiological determinants of spread of causal agent of severe acute respiratory syndrome in Hong Kong. Lancet 2003;361(9371):1761–1766; doi:  [10.1016/S0140-6736(03)13410-1](http://dx.doi.org/10.1016/S0140-6736\(03\)13410-1)
- 
-[3]: Peiris JSM, Lai ST, Poon LLM, et al. Coronavirus as a possible cause of severe acute respiratory syndrome. Lancet 2003;361(9366):1319–1325; doi:  [10.1016/s0140-6736(03)13077-2](http://dx.doi.org/10.1016/s0140-6736\(03\)13077-2)
- 
-[4]: Lee N, Hui D, Wu A, et al. A major outbreak of severe acute respiratory syndrome in Hong Kong. N Engl J Med 2003;348(20):1986–1994; doi:  [10.1056/NEJMoa030685](http://dx.doi.org/10.1056/NEJMoa030685)
- 
-[5]: Leung GM, Hedley AJ, Ho L-M, et al. The epidemiology of severe acute respiratory syndrome in the 2003 Hong Kong epidemic: an analysis of all 1755 patients. Ann Intern Med 2004;141(9):662–673; doi:  [10.7326/0003-4819-141-9-200411020-00006](http://dx.doi.org/10.7326/0003-4819-141-9-200411020-00006)
+###### 1. Lipsitch M, Cohen T, Cooper B, et al. Transmission dynamics and control of severe acute respiratory syndrome. Science 2003;300(5627):1966–1970; doi: [10.1126/science.1086616](http://dx.doi.org/10.1126/science.1086616) {#sec-1}
 
-[6]: World Health Organization. Consensus Document on the Epidemiology of Severe Acute Respiratory Syndrome (‎SARS)‎. World Health Organization; 2003\.]
+###### 2. Donnelly CA, Ghani AC, Leung GM, et al. Epidemiological determinants of spread of causal agent of severe acute respiratory syndrome in Hong Kong. Lancet 2003;361(9371):1761–1766; doi: [10.1016/S0140-6736(03)13410-1](http://dx.doi.org/10.1016/S0140-6736\(03\)13410-1) {#sec-2}
 
-[7]: Severe Acute Respiratory Syndrome \--- Taiwan, 2003\. 2003\. Available from:]  [https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm](https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm) (Last accessed: 10/8/2024)
+###### 3. Peiris JSM, Lai ST, Poon LLM, et al. Coronavirus as a possible cause of severe acute respiratory syndrome. Lancet 2003;361(9366):1319–1325; doi: [10.1016/s0140-6736(03)13077-2](http://dx.doi.org/10.1016/s0140-6736\(03\)13077-2) {#sec-3}
 
-[8]: Biggerstaff M, Cauchemez S, Reed C, et al. Estimates of the reproduction number for seasonal, pandemic, and zoonotic influenza: a systematic review of the literature. BMC Infect Dis 2014;14(1):480; doi:  [10.1186/1471-2334-14-480](http://dx.doi.org/10.1186/1471-2334-14-480)
+###### 4. Lee N, Hui D, Wu A, et al. A major outbreak of severe acute respiratory syndrome in Hong Kong. N Engl J Med 2003;348(20):1986–1994; doi: [10.1056/NEJMoa030685](http://dx.doi.org/10.1056/NEJMoa030685) {#sec-4}
 
-[9]: Lessler J, Reich NG, Brookmeyer R, et al. Incubation periods of acute respiratory viral infections: a systematic review. Lancet Infect Dis 2009;9(5):291–300; doi:  [10.1016/S1473-3099(09)70069-6](http://dx.doi.org/10.1016/S1473-3099\(09\)70069-6)
+###### 5. Leung GM, Hedley AJ, Ho L-M, et al. The epidemiology of severe acute respiratory syndrome in the 2003 Hong Kong epidemic: an analysis of all 1755 patients. Ann Intern Med 2004;141(9):662–673; doi: [10.7326/0003-4819-141-9-200411020-00006](http://dx.doi.org/10.7326/0003-4819-141-9-200411020-00006) {#sec-5}
 
-[10]: Carrat F, Vergu E, Ferguson NM, et al. Time lines of infection and disease in human influenza: a review of volunteer challenge studies. Am J Epidemiol 2008;167(7):775–785; doi:  [10.1093/aje/kwm375](http://dx.doi.org/10.1093/aje/kwm375)
+###### 6. World Health Organization. Consensus Document on the Epidemiology of Severe Acute Respiratory Syndrome (‎SARS)‎. World Health Organization; 2003. {#sec-6}
 
-[11]: Cowling BJ, Chan KH, Fang VJ, et al. Comparative epidemiology of pandemic and seasonal influenza A in households. N Engl J Med 2010;362(23):2175–2184; doi:  [10.1056/NEJMoa0911530](http://dx.doi.org/10.1056/NEJMoa0911530)
+###### 7. Severe Acute Respiratory Syndrome -- Taiwan, 2003. 2003. Available from: [https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm](https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5220a1.htm) {#sec-7}
 
-[12]: Hayward AC, Fragaszy EB, Bermingham A, et al. Comparative community burden and severity of seasonal and pandemic influenza: results of the Flu Watch cohort study. Lancet Respir Med 2014;2(6):445–454; doi:  [10.1016/S2213-2600(14)70034-7](http://dx.doi.org/10.1016/S2213-2600\(14\)70034-7)
+###### 8. Biggerstaff M, Cauchemez S, Reed C, et al. Estimates of the reproduction number for seasonal, pandemic, and zoonotic influenza: a systematic review of the literature. BMC Infect Dis 2014;14(1):480; doi: [10.1186/1471-2334-14-480](http://dx.doi.org/10.1186/1471-2334-14-480) {#sec-8}
 
-[13]: Leung NHL, Xu C, Ip DKM, et al. Review article: The fraction of influenza virus infections that are asymptomatic: A systematic review and meta-analysis. Epidemiology 2015;26(6):862–872; doi:  [10.1097/EDE.0000000000000340](http://dx.doi.org/10.1097/EDE.0000000000000340)
+###### 9. Lessler J, Reich NG, Brookmeyer R, et al. Incubation periods of acute respiratory viral infections: a systematic review. Lancet Infect Dis 2009;9(5):291–300; doi: [10.1016/S1473-3099(09)70069-6](http://dx.doi.org/10.1016/S1473-3099\(09\)70069-6) {#sec-9}
 
-[14]: Paget J, Spreeuwenberg P, Charu V, et al. Global mortality associated with seasonal influenza epidemics: New burden estimates and predictors from the GLaMOR Project. J Glob Health 2019;9(2):020421; doi:  [10.7189/jogh.09.020421](http://dx.doi.org/10.7189/jogh.09.020421)
+###### 10. Carrat F, Vergu E, Ferguson NM, et al. Time lines of infection and disease in human influenza: a review of volunteer challenge studies. Am J Epidemiol 2008;167(7):775–785; doi: [10.1093/aje/kwm375](http://dx.doi.org/10.1093/aje/kwm375) {#sec-10}
 
-[15]: World Health Assembly. Implementation of the International Health Regulations (‎2005)‎: Report of the Review Committee on the Functioning of the International Health Regulations (‎2005)‎ in Relation to Pandemic (‎H1N1)‎ 2009: Report by the Director-General. World Health Organization; 2011\.]
+###### 11. Cowling BJ, Chan KH, Fang VJ, et al. Comparative epidemiology of pandemic and seasonal influenza A in households. N Engl J Med 2010;362(23):2175–2184; doi: [10.1056/NEJMoa0911530](http://dx.doi.org/10.1056/NEJMoa0911530) {#sec-11}
 
-[16]: Paget J, Staadegaard L, Wang X, et al. Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions. J Glob Health 2023;13(04003):04003; doi:  [10.7189/jogh.13.04003](http://dx.doi.org/10.7189/jogh.13.04003)
+###### 12. Hayward AC, Fragaszy EB, Bermingham A, et al. Comparative community burden and severity of seasonal and pandemic influenza: results of the Flu Watch cohort study. Lancet Respir Med 2014;2(6):445–454; doi: [10.1016/S2213-2600(14)70034-7](http://dx.doi.org/10.1016/S2213-2600\(14\)70034-7) {#sec-12}
 
-[17]: Wang X, Li Y, Shi T, et al. Global disease burden of and risk factors for acute lower respiratory infections caused by respiratory syncytial virus in preterm infants and young children in 2019: a systematic review and meta-analysis of aggregated and individual participant data. Lancet 2024;403(10433):1241–1253; doi:  [10.1016/S0140-6736(24)00138-7](http://dx.doi.org/10.1016/S0140-6736\(24\)00138-7)
+###### 13. Leung NHL, Xu C, Ip DKM, et al. Review article: The fraction of influenza virus infections that are asymptomatic: A systematic review and meta-analysis. Epidemiology 2015;26(6):862–872; doi: [10.1097/EDE.0000000000000340](http://dx.doi.org/10.1097/EDE.0000000000000340) {#sec-13}
 
-[18]: Reis J, Shaman J. Retrospective parameter estimation and forecast of respiratory syncytial virus in the United States. PLoS Comput Biol 2016;12(10):e1005133; doi:  [10.1371/journal.pcbi.1005133](http://dx.doi.org/10.1371/journal.pcbi.1005133)
+###### 14. Paget J, Spreeuwenberg P, Charu V, et al. Global mortality associated with seasonal influenza epidemics: New burden estimates and predictors from the GLaMOR Project. J Glob Health 2019;9(2):020421; doi: [10.7189/jogh.09.020421](http://dx.doi.org/10.7189/jogh.09.020421) {#sec-14}
 
-[19]: Welliver RC. Review of epidemiology and clinical risk factors for severe respiratory syncytial virus (RSV) infection. J Pediatr 2003;143(5 Suppl):S112–7; doi:  [10.1067/s0022-3476(03)00508-0](http://dx.doi.org/10.1067/s0022-3476\(03\)00508-0)
- [20]: Hall CB. Respiratory syncytial virus and parainfluenza virus. N Engl J Med 2001;344(25):1917–1928; doi:  [10.1056/NEJM200106213442507](http://dx.doi.org/10.1056/NEJM200106213442507)
+###### 15. World Health Assembly. Implementation of the International Health Regulations (‎2005)‎: Report of the Review Committee on the Functioning of the International Health Regulations (‎2005)‎ in Relation to Pandemic (‎H1N1)‎ 2009: Report by the Director-General. World Health Organization; 2011. {#sec-15}
 
-[21]: Munywoki PK, Koech DC, Agoti CN, et al. Influence of age, severity of infection, and co-infection on the duration of respiratory syncytial virus (RSV) shedding. Epidemiol Infect 2015;143(4):804–812; doi:  [10.1017/S0950268814001393](http://dx.doi.org/10.1017/S0950268814001393)
+###### 16. Paget J, Staadegaard L, Wang X, et al. Global and national influenza-associated hospitalisation rates: Estimates for 40 countries and administrative regions. J Glob Health 2023;13(04003):04003; doi: [10.7189/jogh.13.04003](http://dx.doi.org/10.7189/jogh.13.04003) {#sec-16}
 
-[22]: Hall CB, Douglas RG Jr, Schnabel KC, et al. Infectivity of respiratory syncytial virus by various routes of inoculation. Infect Immun 1981;33(3):779–783; doi:  [10.1128/iai.33.3.779-783.1981](http://dx.doi.org/10.1128/iai.33.3.779-783.1981)
+###### 17. Wang X, Li Y, Shi T, et al. Global disease burden of and risk factors for acute lower respiratory infections caused by respiratory syncytial virus in preterm infants and young children in 2019: a systematic review and meta-analysis of aggregated and individual participant data. Lancet 2024;403(10433):1241–1253; doi: [10.1016/S0140-6736(24)00138-7](http://dx.doi.org/10.1016/S0140-6736\(24\)00138-7) {#sec-17}
 
-[23]: Munywoki PK, Koech DC, Agoti CN, et al. Frequent asymptomatic respiratory syncytial virus infections during an epidemic in a rural Kenyan household cohort. J Infect Dis 2015;212(11):1711–1718; doi:  [10.1093/infdis/jiv263](http://dx.doi.org/10.1093/infdis/jiv263)
+###### 18. Reis J, Shaman J. Retrospective parameter estimation and forecast of respiratory syncytial virus in the United States. PLoS Comput Biol 2016;12(10):e1005133; doi: [10.1371/journal.pcbi.1005133](http://dx.doi.org/10.1371/journal.pcbi.1005133) {#sec-18}
 
-[24]: Hall CB, Weinberg GA, Iwane MK, et al. The burden of respiratory syncytial virus infection in young children. N Engl J Med 2009;360(6):588–598; doi:  [10.1056/NEJMoa0804877](http://dx.doi.org/10.1056/NEJMoa0804877)
+###### 19. Welliver RC. Review of epidemiology and clinical risk factors for severe respiratory syncytial virus (RSV) infection. J Pediatr 2003;143(5 Suppl):S112–7; doi: [10.1067/s0022-3476(03)00508-0](http://dx.doi.org/10.1067/s0022-3476\(03\)00508-0) {#sec-19}
 
-[25]: Shi T, McAllister DA, O’Brien KL, et al. Global, regional, and national disease burden estimates of acute lower respiratory infections due to respiratory syncytial virus in young children in 2015: a systematic review and modelling study. Lancet 2017;390(10098):946–958; doi:  [10.1016/S0140-6736(17)30938-8](http://dx.doi.org/10.1016/S0140-6736\(17\)30938-8)
+###### 20. Hall CB. Respiratory syncytial virus and parainfluenza virus. N Engl J Med 2001;344(25):1917–1928; doi: [10.1056/NEJM200106213442507](http://dx.doi.org/10.1056/NEJM200106213442507) {#sec-20}
 
-[26]: Wildenbeest JG, Billard M-N, Zuurbier RP, et al. The burden of respiratory syncytial virus in healthy term-born infants in Europe: a prospective birth cohort study. Lancet Respir Med 2023;11(4):341–353; doi:  [10.1016/S2213-2600(22)00414-3](http://dx.doi.org/10.1016/S2213-2600\(22\)00414-3)
+###### 21. Munywoki PK, Koech DC, Agoti CN, et al. Influence of age, severity of infection, and co-infection on the duration of respiratory syncytial virus (RSV) shedding. Epidemiol Infect 2015;143(4):804–812; doi: [10.1017/S0950268814001393](http://dx.doi.org/10.1017/S0950268814001393) {#sec-21}
+
+###### 22. Hall CB, Douglas RG Jr, Schnabel KC, et al. Infectivity of respiratory syncytial virus by various routes of inoculation. Infect Immun 1981;33(3):779–783; doi: [10.1128/iai.33.3.779-783.1981](http://dx.doi.org/10.1128/iai.33.3.779-783.1981) {#sec-22}
+
+###### 23. Munywoki PK, Koech DC, Agoti CN, et al. Frequent asymptomatic respiratory syncytial virus infections during an epidemic in a rural Kenyan household cohort. J Infect Dis 2015;212(11):1711–1718; doi: [10.1093/infdis/jiv263](http://dx.doi.org/10.1093/infdis/jiv263) {#sec-23}
+
+###### 24. Hall CB, Weinberg GA, Iwane MK, et al. The burden of respiratory syncytial virus infection in young children. N Engl J Med 2009;360(6):588–598; doi: [10.1056/NEJMoa0804877](http://dx.doi.org/10.1056/NEJMoa0804877) {#sec-24}
+
+###### 25. Shi T, McAllister DA, O’Brien KL, et al. Global, regional, and national disease burden estimates of acute lower respiratory infections due to respiratory syncytial virus in young children in 2015: a systematic review and modelling study. Lancet 2017;390(10098):946–958; doi: [10.1016/S0140-6736(17)30938-8](http://dx.doi.org/10.1016/S0140-6736\(17\)30938-8) {#sec-25}
+
+###### 26. Wildenbeest JG, Billard M-N, Zuurbier RP, et al. The burden of respiratory syncytial virus in healthy term-born infants in Europe: a prospective birth cohort study. Lancet Respir Med 2023;11(4):341–353; doi: [10.1016/S2213-2600(22)00414-3](http://dx.doi.org/10.1016/S2213-2600\(22\)00414-3) {#sec-26}
