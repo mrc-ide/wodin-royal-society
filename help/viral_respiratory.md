@@ -19,35 +19,35 @@ The tool simulates how a respiratory virus spreads within an age-structured popu
 Infectious disease models are designed to mirror the specific biological and epidemiological characteristics of a pathogen. This process, known as parameterisation, involves setting key parameters that capture how a disease spreads, how quickly it progresses, and how it affects different segments of the population. For respiratory viruses, like COVID-19, a number of different parameters need to be parameterised to accurately reflect how the virus behaves and to predict its impact.
 
 ---
-
-|Model Code |Parameter | Definition                                      |
-|:---------|:--------|:----------------------------------------------------------|
-| **A0** | **Importation Rate** | The rate at which new cases of a disease are introduced into a population from external sources, such as international travel or movement between regions. The importation rate will determine the need for interventions like border controls or quarantines. |
-| **A1** | **$R_0$ (Basic Reproduction Number)** | The average number of secondary infections caused by one infected individual in a fully susceptible population. A higher $R_0$ implies a more contagious pathogen with greater transmissibility. |
-| **A2** | **Incubation Period** | The time between exposure to the pathogen and the onset of symptoms. This period determines how quickly a pathogen spreads and the duration of self-isolation policies after infectious contact.  |
-| **A3** | **Percentage of Incubation Period Infectious** | The proportion of the incubation period during which an infected person is capable of transmitting the pathogen. This is critical for designing intervention policies and the need for diagnostic testing. |
-| **A4** | **Proportion of Asymptomatic Infections** | The percentage of infected individuals who do not show symptoms but can still transmit the pathogen. This affects the overall transmission dynamics and the need for diagnostic testing.  |
-| **A5** | **Symptomatic Period** | The duration during which an infected individual exhibits symptoms of the disease. Longer symptomatic periods will require longer case isolation policies to prevent onward spread of infections. |
-| **A6 \- A8** | **Severity by Age (IHR/IFR)** | Infection Hospitalisation Rate (IHR) and Infection Fatality Rate (IFR) describe the likelihood of an individual requiring hospital care or dying from the infection, often varying by age group and other individual risk factors. |
-
----
-
-Different pathogens have distinct characteristics in terms of transmission dynamics, incubation periods, and severity, highlighted by comparing three notable viral respiratory pathogens: Severe Acute Respiratory Syndrome coronavirus 1 (SARS-1), influenza, and Respiratory Syncytial Virus (RSV). The table below summarises key epidemiological parameters for each respiratory viral pathogen.
-
----
-
-| Pathogen    | $R_0$         | Incubation Period   | Symptomatic Period   | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR                  | IHR                  |
-|:-----------|:-------------:|:-------------------:|:--------------------:|:------------------------------------------:|:------------------------------------:|:--------------------:|:--------------------:|
-| **SARS-1**  | \~2-3 [[1]](#sec-1) | \~4-6 days [[2]](#sec-2) | \~7-21 days [[3,4]](#sec-3) | \~0-10% [[1]](#sec-1)  | \<5% [[5]](#sec-5)  | \~9-15% [[6]](#sec-6)  | \~100% [[7]](#sec-7)  |
-| **Influenza**| \~1-2 [[8]](#sec-8) | \~1-4 days [[9]](#sec-9) | \~3-7 days [[10]](#sec-10) | \~25-50% [[11]](#sec-11) | \~15-75%\* [[12,13]](#sec-12) | \~0.01 - 0.1%\*\* [[14,15]](#sec-14) | \~0.0002% - 0.0007% [[16]](#sec-16) |
-| **RSV**     | \~1-3 [[17,18]](#sec-17) | \~3-6 days [[17,19]](#sec-17) | \~7-12 days [[20,21]](#sec-20) | \~0-10% [[22]](#sec-22)  | \~20-40%\*\*\* [[23,24]](#sec-23) | \<0.1% [[25]](#sec-25)  | \~1-3%\*\*\* [[26]](#sec-26) |
-
-\* Varies by strain and study  
-\*\* 1918 H1N1 IFR \~2%  
-\*\*\* Proportion of infections that are symptomatic and proportion of infections requiring hospitalisation higher in children and elderly adults  
+  
+  |Model Code |Parameter | Definition                                      |
+  |:---------|:--------|:----------------------------------------------------------|
+  | **A0** | **Importation Rate** | The rate at which new cases of a disease are introduced into a population from external sources, such as international travel or movement between regions. The importation rate will determine the need for interventions like border controls or quarantines. |
+  | **A1** | **$R_0$ (Basic Reproduction Number)** | The average number of secondary infections caused by one infected individual in a fully susceptible population. A higher $R_0$ implies a more contagious pathogen with greater transmissibility. |
+  | **A2** | **Incubation Period** | The time between exposure to the pathogen and the onset of symptoms. This period determines how quickly a pathogen spreads and the duration of self-isolation policies after infectious contact.  |
+  | **A3** | **Percentage of Incubation Period Infectious** | The proportion of the incubation period during which an infected person is capable of transmitting the pathogen. This is critical for designing intervention policies and the need for diagnostic testing. |
+  | **A4** | **Proportion of Asymptomatic Infections** | The percentage of infected individuals who do not show symptoms but can still transmit the pathogen. This affects the overall transmission dynamics and the need for diagnostic testing.  |
+  | **A5** | **Symptomatic Period** | The duration during which an infected individual exhibits symptoms of the disease. Longer symptomatic periods will require longer case isolation policies to prevent onward spread of infections. |
+  | **A6 \- A8** | **Severity by Age (IHR/IFR)** | Infection Hospitalisation Rate (IHR) and Infection Fatality Rate (IFR) describe the likelihood of an individual requiring hospital care or dying from the infection, often varying by age group and other individual risk factors. |
+  
+  ---
+  
+  Different pathogens have distinct characteristics in terms of transmission dynamics, incubation periods, and severity, highlighted by comparing three notable viral respiratory pathogens: Severe Acute Respiratory Syndrome coronavirus 1 (SARS-1), influenza, and Respiratory Syncytial Virus (RSV). The table below summarises key epidemiological parameters for each respiratory viral pathogen.
 
 ---
-These parameters illustrate the differences in transmission dynamics and severity across pathogens, and help understand how to design appropriate public health strategies. For example, SARS-1 could be effectively controlled through isolating symptomatic individuals due to the limited pre-symptomatic transmission. On the other hand, influenza’s shorter incubation period and higher pre-symptomatic transmission requires broader interventions to reduce spread. RSV's higher $R_0$, in combination with increased rates of pre-symptomatic transmission amongst children necessitates targeted paediatric responses. The combination of each parameter will determine how difficult the spread of the pathogen is to control.
+  
+  | Pathogen    | $R_0$         | Incubation Period   | Symptomatic Period   | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR                  | IHR                  |
+  |:-----------|:-------------:|:-------------------:|:--------------------:|:------------------------------------------:|:------------------------------------:|:--------------------:|:--------------------:|
+  | **SARS-1**  | \~2-3 [[1]](#sec-1) | \~4-6 days [[2]](#sec-2) | \~7-21 days [[3,4]](#sec-3) | \~0-10% [[1]](#sec-1)  | \<5% [[5]](#sec-5)  | \~9-15% [[6]](#sec-6)  | \~100% [[7]](#sec-7)  |
+    | **Influenza**| \~1-2 [[8]](#sec-8) | \~1-4 days [[9]](#sec-9) | \~3-7 days [[10]](#sec-10) | \~25-50% [[11]](#sec-11) | \~15-75%\* [[12,13]](#sec-12) | \~0.01 - 0.1%\*\* [[14,15]](#sec-14) | \~0.0002% - 0.0007% [[16]](#sec-16) |
+      | **RSV**     | \~1-3 [[17,18]](#sec-17) | \~3-6 days [[17,19]](#sec-17) | \~7-12 days [[20,21]](#sec-20) | \~0-10% [[22]](#sec-22)  | \~20-40%\*\*\* [[23,24]](#sec-23) | \<0.1% [[25]](#sec-25)  | \~1-3%\*\*\* [[26]](#sec-26) |
+        
+        \* Varies by strain and study  
+        \*\* 1918 H1N1 IFR \~2%  
+        \*\*\* Proportion of infections that are symptomatic and proportion of infections requiring hospitalisation higher in children and elderly adults  
+        
+        ---
+          These parameters illustrate the differences in transmission dynamics and severity across pathogens, and help understand how to design appropriate public health strategies. For example, SARS-1 could be effectively controlled through isolating symptomatic individuals due to the limited pre-symptomatic transmission. On the other hand, influenza’s shorter incubation period and higher pre-symptomatic transmission requires broader interventions to reduce spread. RSV's higher $R_0$, in combination with increased rates of pre-symptomatic transmission amongst children necessitates targeted paediatric responses. The combination of each parameter will determine how difficult the spread of the pathogen is to control.
 
 ### **2. How To Choose Disease Transmission Parameters**
 
@@ -66,27 +66,27 @@ The user can also specify the time at which NPIs are implemented, and how effect
 
 #### **3. NPI Effect Parameters**
 
-The impact that each NPI will have depends on a number of factors (the severity of the pathogen, the level of public adherence with guidelines, the stringency of restrictions etc). The estimates provided in the table below provide a range for the impact of different interventions for COVID-19 if implemented on their own.
+The impact that each NPI will have depends on a number of factors (the severity of the pathogen, the level of public adherence with guidelines, the stringency of restrictions etc). The estimates provided in the table below provide a range for the impact of different interventions for COVID-19 (or estimated for a respiratory pathogen) if implemented on their own.
 
 ---
 
 | Category of Intervention | Broad NPI Category | Intervention | Range of Impact (Reduction) | Reference |
 | :--- | :--- | ----- | :---: | :--- |
-| **Reducing transmission amongst contacts** | Protection Measures | Face Coverings (Masks) | 20% | Boulos et al., 2023 Review |
-|  |  | Respirators (N95, KN95, FFP2) | 30% | Boulos et al., 2023 Review |
-|  | Individual Behavioural | Hand Hygiene | 10% | Gozdielewska et al., 2022 |
-|  |  | Respiratory Etiquette | 15% | 2021 NHS Scotland Literature Review |
-|  | Community Measures | Physical Distancing | 15% | Murphy et al., 2023 Review |
-|  |  | Encouraging Outdoor Meetings | 25% | Murphy et al., 2023 Review |
+| **Reducing transmission amongst contacts** | Protection Measures | Face Coverings (Masks) | 0-20% | Boulos et al., 2023 Review |
+|  |  | Respirators (N95, KN95, FFP2) | >0-20% | Boulos et al., 2023 Review |
+|  | Individual Behavioural | Hand Hygiene | 0-20% | Gozdielewska et al., 2022 |
+|  |  | Respiratory Etiquette | 0-10% | Zayas et al. 2013 |
+|  | Community Measures | Physical Distancing | 10-40% | Murphy et al., 2023 Review |
+|  |  | Encouraging Outdoor Meetings | 10-30% | Murphy et al., 2023 Review |
 | **Reducing contact rates for specific age groups** | Community Measures | Lockdowns (Partial \- Full) | 30-80% | Davies et al., 2020; Flaxman et al., 2020 |
-|  |  | School Measures and Closures | 20% | Murphy et al., 2023 Review |
-|  |  | Work at home orders | 25% | Beck et al 2020 |
-|  |  | Public Event Cancellations | 25% | Brauner et al 2021 |
-| **Reducing infectiousness of those who are sick** | Community Measures | Symptomatic or Positive Test Self-Isolation | 25% | Murphy et al., 2023 Review |
-|  | Testing Measures | Mass Testing | 30% | Littlecott et al., 2023 Review |
-|  |  | Contact Tracing | 30% | Littlecott et al., 2023 Review |
-| **Reducing the importation of new cases** | Travel Restrictions | Border Closures | 20% | Grépin et al., 2023 Review |
-|  |  | Entry Screening and Quarantine for Travellers | 20% | Grépin et al., 2023 Review |
+|  |  | School Measures and Closures | 10-30% | Murphy et al., 2023 Review |
+|  |  | Work at home orders | 15-40% | Brauner et al 2020, Sharma et al 2021 |
+|  |  | Public Event Cancellations | 10-35% | Brauner et al 2020, Sharma et al 2021 |
+| **Reducing infectiousness of those who are sick** | Community Measures | Symptomatic or Positive Test Self-Isolation | 10-60% | Quilty et al., 2021 |
+|  | Testing Measures | Mass Testing | 15-50% | Littlecott et al., 2023 Review |
+|  |  | Contact Tracing | 10-45% | Littlecott et al., 2023 Review |
+| **Reducing the importation of new cases** | Travel Restrictions | Border Closures | 40-90% | Grépin et al., 2023 Review |
+|  |  | Entry Screening and Quarantine for Travellers | 30-90% | Dickens et al. 2020 |
 
 ### 
 
