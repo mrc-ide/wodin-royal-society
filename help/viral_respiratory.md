@@ -12,7 +12,7 @@ This tool enables the user to explore the potential impact of a range of non-pha
 
 The tool simulates how a respiratory virus spreads within an age-structured population. People start in the “susceptible” category (S), meaning they are healthy but at risk of catching the disease. If they are exposed to someone infectious, they move into the “exposed” group (E), where they carry the virus but are not yet symptomatic. From here, they either develop symptoms and move into the “symptomatic infected” group (I), or they stay without symptoms and move into the “asymptomatic” group (A). Asymptomatic individuals all eventually recover (R), but symptomatic people might be hospitalized (H), and hospitalized people can either recover (R) or die (D). The age of an individual impacts their risk of different disease outcomes as well as the impact of different NPIs. The model tracks and outputs how many people are in each disease stage over time.
 
-**INSERT COMPARTMENTAL FIGURE HERE**
+![Transmission model diagram](viral_respiratory.png)
 
 #### **1. Disease Transmission Parameters**
 
@@ -21,7 +21,7 @@ Infectious disease models are designed to mirror the specific biological and epi
 ---
 
 |Model Code |Parameter | Definition                                      |
-|---------:|:--------|:----------------------------------------------------------|
+|:---------|:--------|:----------------------------------------------------------|
 | **A0** | **Importation Rate** | The rate at which new cases of a disease are introduced into a population from external sources, such as international travel or movement between regions. The importation rate will determine the need for interventions like border controls or quarantines. |
 | **A1** | **$R_0$ (Basic Reproduction Number)** | The average number of secondary infections caused by one infected individual in a fully susceptible population. A higher $R_0$ implies a more contagious pathogen with greater transmissibility. |
 | **A2** | **Incubation Period** | The time between exposure to the pathogen and the onset of symptoms. This period determines how quickly a pathogen spreads and the duration of self-isolation policies after infectious contact.  |
@@ -47,7 +47,6 @@ Different pathogens have distinct characteristics in terms of transmission dynam
 \*\*\* Proportion of infections that are symptomatic and proportion of infections requiring hospitalisation higher in children and elderly adults  
 
 ---
-
 These parameters illustrate the differences in transmission dynamics and severity across pathogens, and help understand how to design appropriate public health strategies. For example, SARS-1 could be effectively controlled through isolating symptomatic individuals due to the limited pre-symptomatic transmission. On the other hand, influenza’s shorter incubation period and higher pre-symptomatic transmission requires broader interventions to reduce spread. RSV's higher $R_0$, in combination with increased rates of pre-symptomatic transmission amongst children necessitates targeted paediatric responses. The combination of each parameter will determine how difficult the spread of the pathogen is to control.
 
 ### **2. How To Choose Disease Transmission Parameters**
