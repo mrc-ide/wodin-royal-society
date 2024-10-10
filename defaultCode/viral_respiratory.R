@@ -144,6 +144,24 @@ new_deaths03 <- rate_H * HFR * H03
 # Testing frequency input
 testing_rate <- 0  # Rate of testing individuals per day
 
+# Daily outputs
+daily_infections <- new_infections01 + new_infections02 + new_infections03
+daily_hospital_admissions <- new_hospitalisations01 + new_hospitalisations02 +new_hospitalisations03
+daily_deaths <- new_deaths01 +  new_deaths02 +  new_deaths03
+output(daily_infections) <- TRUE
+output(daily_importations) <- importations01 + importations02 + importations03
+output(daily_hospital_admissions) <- TRUE
+output(daily_deaths) <- TRUE
+
+# Cumulative_outputs - put these first to improve colour range on graphs for outputs of interest
+deriv(total_infections) <- daily_infections
+deriv(total_hospital_admissions) <- daily_hospital_admissions
+deriv(total_deaths) <- daily_deaths
+initial(total_infections) <- 0
+initial(total_hospital_admissions) <- 0
+initial(total_deaths) <- 0
+
+
 # Compartment flow (from exposed to presymptomatic and further compartments)
 deriv(S01) <- -new_infections01
 deriv(E01) <- new_infections01 - rate_E * E01  # Non-infectious exposed
@@ -224,32 +242,17 @@ output(check_total_popsize) <-
   (S02 + E02 + I_E02 + I_A02 + I_M02 + I_H02 + H02 + T02 + R02 + D02) +
   (S03 + E03 + I_E03 + I_A03 + I_M03 + I_H03 + H03 + T03 + R03 + D03)
 
-# Daily outputs
-daily_infections <- new_infections01 + new_infections02 + new_infections03
-daily_hospital_admissions <- new_hospitalisations01 + new_hospitalisations02 +new_hospitalisations03
-daily_deaths <- new_deaths01 +  new_deaths02 +  new_deaths03
-output(daily_infections) <- TRUE
-output(daily_importations) <- importations01 + importations02 + importations03
-output(daily_hospital_admissions) <- TRUE
-output(daily_deaths) <- TRUE
-
-# Cumulative_outputs
-deriv(total_infections) <- daily_infections
-deriv(total_hospital_admissions) <- daily_hospital_admissions
-deriv(total_deaths) <- daily_deaths
-initial(total_infections) <- 0
-initial(total_hospital_admissions) <- 0
-initial(total_deaths) <- 0
 
 
-# Summary outputs
-output(S_total) <- S01 + S02 + S03
-output(E_total) <- E01 + E02 + E03
+# Summary outputs 
+output(S) <- S01 + S02 + S03
+output(E) <- E01 + E02 + E03
 output(I) <- I_E01 + I_E02 + I_E03 +
   I_A01 + I_A02 + I_A03 +
   I_M01 + I_M02 + I_M03 +
   I_H01 + I_H02 + I_H03
-output(H_total) <- H01 + H02 + H03
-output(T_total) <- T01 + T02 + T03
-output(R_total) <- R01 + R02 + R03
+output(H) <- H01 + H02 + H03
+output(T) <- T01 + T02 + T03
+output(R) <- R01 + R02 + R03
+
 
