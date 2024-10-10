@@ -37,7 +37,7 @@ Different pathogens have distinct characteristics in terms of transmission dynam
 ---
 
 | Pathogen    | $R_0$         | Incubation Period   | Symptomatic Period   | Percentage of Incubation Period Infectious | Proportion of Asymptomatic Infections | IFR                  | IHR                  |
-|:-----------:|:-------------:|:-------------------:|:--------------------:|:------------------------------------------:|:------------------------------------:|:--------------------:|:--------------------:|
+|:-----------|:-------------:|:-------------------:|:--------------------:|:------------------------------------------:|:------------------------------------:|:--------------------:|:--------------------:|
 | **SARS-1**  | \~2-3 [[1]](#sec-1) | \~4-6 days [[2]](#sec-2) | \~7-21 days [[3,4]](#sec-3) | \~0-10% [[1]](#sec-1)  | \<5% [[5]](#sec-5)  | \~9-15% [[6]](#sec-6)  | \~100% [[7]](#sec-7)  |
 | **Influenza**| \~1-2 [[8]](#sec-8) | \~1-4 days [[9]](#sec-9) | \~3-7 days [[10]](#sec-10) | \~25-50% [[11]](#sec-11) | \~15-75%\* [[12,13]](#sec-12) | \~0.01 - 0.1%\*\* [[14,15]](#sec-14) | \~0.0002% - 0.0007% [[16]](#sec-16) |
 | **RSV**     | \~1-3 [[17,18]](#sec-17) | \~3-6 days [[17,19]](#sec-17) | \~7-12 days [[20,21]](#sec-20) | \~0-10% [[22]](#sec-22)  | \~20-40%\*\*\* [[23,24]](#sec-23) | \<0.1% [[25]](#sec-25)  | \~1-3%\*\*\* [[26]](#sec-26) |
@@ -71,7 +71,7 @@ The impact that each NPI will have depends on a number of factors (the severity 
 ---
 
 | Category of Intervention | Broad NPI Category | Intervention | Range of Impact (Reduction) | Reference |
-| ---: | :--- | ----- | :---: | :---: |
+| :--- | :--- | ----- | :---: | :--- |
 | **Reducing transmission amongst contacts** | Protection Measures | Face Coverings (Masks) | 20% | Boulos et al., 2023 Review |
 |  |  | Respirators (N95, KN95, FFP2) | 30% | Boulos et al., 2023 Review |
 |  | Individual Behavioural | Hand Hygiene | 10% | Gozdielewska et al., 2022 |

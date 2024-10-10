@@ -131,7 +131,7 @@ respiratory_virus_simple <- function(S_x = 1, S_y = 1,
     list(x0 = S$x0, x1 = R$x1, y0 = D$y0, y1 = A$y1)
 }
 
-flodia_png(respiratory_virus_simple, filepath = "respiratory_virus.png", res = 200)
+flodia_png(respiratory_virus_simple, filepath = "help/viral_respiratory.png", res = 200)
 
 
 
