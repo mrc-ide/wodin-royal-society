@@ -122,9 +122,10 @@ infectious_period <- (N01 * infectious_period01 +
 beta <- A1_R0 / infectious_period
 
 # Homogeneous mixing for each age group with proportional contact
-foi01 <- npi_transmission01 * beta * I_total / N
-foi02 <- npi_transmission02 * beta * I_total / N
-foi03 <- npi_transmission03 * beta * I_total / N
+I_total_after_NPIs <- I01 * npi_transmission01 + I02 * npi_transmission02 + I03 * npi_transmission03
+foi01 <- npi_transmission01 * beta * I_total_after_NPIs / N
+foi02 <- npi_transmission02 * beta * I_total_after_NPIs / N
+foi03 <- npi_transmission03 * beta * I_total_after_NPIs / N
 
 # New infections considering both imported and locally acquired, ensuring not to exceed susceptibles
 new_infections01 <- min(S01, foi01 * S01 + importations01)
