@@ -3,6 +3,7 @@
     "title": "Modelling Viral Respiratory Pathogen NPIs",
     "basicProp": "",
     "readOnlyCode": true,
+    "endTime": 730,
     "multiSensitivity": true,
     "help": {
         "tabName": "Explanation"

@@ -2,7 +2,8 @@
     "appType": "basic",
     "title": "Modelling Viral Respiratory Pathogen Double NPIs",
     "basicProp": "",
-    "readOnlyCode": true,
+    "readOnlyCode": false,
+    "endTime": 730,
     "multiSensitivity": true,
     "help": {
         "tabName": "Explanation"

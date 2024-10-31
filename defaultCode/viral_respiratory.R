@@ -94,9 +94,9 @@ I_total <- I01 + I02 + I03
 
 
 # Apply NPIs based on the time
-npi_transmission01 <- if (t < t_npi) 1 else 1 - (npi_c01 + (1 - npi_c01) * npi_t)
-npi_transmission02 <- if (t < t_npi) 1 else 1 - (npi_c02 + (1 - npi_c02) * npi_t)
-npi_transmission03 <- if (t < t_npi) 1 else 1 - (npi_c03 + (1 - npi_c03) * npi_t)
+npi_transmission01 <- if (t < t_npi) 1 else 1 - npi_c01
+npi_transmission02 <- if (t < t_npi) 1 else 1 - npi_c02
+npi_transmission03 <- if (t < t_npi) 1 else 1 - npi_c03
 npi_symptoms <- if (t < t_npi) 1 else 1 - B3a_proportion_isolating_after_symptoms   # Reduction in infectiousness after symptoms
 npi_testing  <- if (t < t_npi) 1 else 1 - B3b_proportion_isolating_after_testing_positive   # Reduction in infectiousness after testing
 
@@ -120,12 +120,16 @@ infectious_period <- (N01 * infectious_period01 +
                         N03 * infectious_period03) / N
 # Calculate beta from R0 using the weighted average infectious period
 beta <- A1_R0 / infectious_period
+beta_t <- if (t > t_npi) beta * (1-npi_t) else beta
 
 # Homogeneous mixing for each age group with proportional contact
-I_total_after_NPIs <- I01 * npi_transmission01 + I02 * npi_transmission02 + I03 * npi_transmission03
-foi01 <- npi_transmission01 * beta * I_total_after_NPIs / N
-foi02 <- npi_transmission02 * beta * I_total_after_NPIs / N
-foi03 <- npi_transmission03 * beta * I_total_after_NPIs / N
+S_I1_after_NPIs <- I01 * npi_transmission01 + I02 * min(npi_transmission02, npi_transmission01) + I03 * min(npi_transmission03, npi_transmission01)
+S_I2_after_NPIs <- I01 * min(npi_transmission01, npi_transmission02) + I02 * npi_transmission02 + I03 * min(npi_transmission03, npi_transmission02)
+S_I3_after_NPIs <- I01 * min(npi_transmission01, npi_transmission03) + I02 * min(npi_transmission02, npi_transmission03) + I03 * npi_transmission03
+
+foi01 <-  beta_t * S_I1_after_NPIs / N
+foi02 <-  beta_t * S_I2_after_NPIs / N
+foi03 <-  beta_t * S_I3_after_NPIs / N
 
 # New infections considering both imported and locally acquired, ensuring not to exceed susceptibles
 new_infections01 <- min(S01, foi01 * S01 + importations01)
