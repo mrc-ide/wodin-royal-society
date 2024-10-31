@@ -54,6 +54,10 @@ Physical Contact Transmission
 Sexual or Blood-borne
 </button>
 
+<button onclick="window.location.href='apps/viral_respiratory_double_npi';" style = "background: aliceblue; border-radius: 5px; border-color: azure">
+Respiratory Transmission Double NPI
+</button>
+
 ---
 
 ##### **Tailored Models:**
