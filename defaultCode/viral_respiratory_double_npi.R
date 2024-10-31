@@ -13,7 +13,7 @@ A8_IFR_age_over_65 <- user(0.05, min = 0, max = 0.2) # capped at HFR
 
 # User-defined NPI parameters 
 B0_npi_delay_after_first_hospitalisation <- user(14, min = 0)
-B0_npi_duration <- user(1/0, min = 0)
+B0_npi_duration <- user(1000, min = 0)
 
 
 
@@ -34,8 +34,8 @@ B4_reduction_in_importations <- user(0, min = 0, max = 1)  # NPI efficacy for re
 # Second Set of NPIs
 
 # User-defined NPI parameters 
-C0_second_npi_start <- user(1/0, min = 0)
-C0_second_npi_stop <- user(1/0, min = 0)
+C0_second_npi_start <- user(1000, min = 0)
+C0_second_npi_stop <- user(1000, min = 0)
 
 # NPI parameters for transmission reductions (default is 0, meaning no reduction)
 C1_reduction_in_transmission_among_contacts <- user(0, min = 0, max = 1)
