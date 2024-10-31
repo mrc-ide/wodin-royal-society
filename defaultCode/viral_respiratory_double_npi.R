@@ -13,6 +13,9 @@ A8_IFR_age_over_65 <- user(0.05, min = 0, max = 0.2) # capped at HFR
 
 # User-defined NPI parameters 
 B0_npi_delay_after_first_hospitalisation <- user(14, min = 0)
+B0_npi_duration <- user(Inf, min = 0)
+
+
 
 # NPI parameters for transmission reductions (default is 0, meaning no reduction)
 B1_reduction_in_transmission_among_contacts <- user(0, min = 0, max = 1)
@@ -28,6 +31,25 @@ B3b_proportion_isolating_after_testing_positive <- 0  # Reduction in infectiousn
 B4_reduction_in_importations <- user(0, min = 0, max = 1)  # NPI efficacy for reducing importations
 
 
+# Second Set of NPIs
+
+# User-defined NPI parameters 
+C0_second_npi_start <- user(Inf, min = 0)
+C0_second_npi_stop <- user(Inf, min = 0)
+
+# NPI parameters for transmission reductions (default is 0, meaning no reduction)
+C1_reduction_in_transmission_among_contacts <- user(0, min = 0, max = 1)
+C2a_reduction_in_contacts_under_18 <- user(0, min = 0, max = 1)  # NPI efficacy for school-age
+C2b_reduction_in_contacts_18_65 <- user(0, min = 0, max = 1)  # NPI efficacy for working-age
+C2c_reduction_in_contacts_over_65 <- user(0, min = 0, max = 1)  # NPI efficacy for retired-age
+
+# NPI parameters for isolation and testing reductions (set to 0 by default)
+C3a_proportion_isolating_after_symptoms <- user(0, min = 0, max = 1)  # Reduction in infectiousness after symptoms
+C3b_proportion_isolating_after_testing_positive <- 0  # Reduction in infectiousness after testing - not currently used
+
+# NPI parameters for importation (set to 0 by default)
+C4_reduction_in_importations <- user(0, min = 0, max = 1)  # NPI efficacy for reducing importations
+
 # Convert user params to model params
 p_S <- A4_prop_symptomatic
 p_I_E <- min(A3_incubation_prop_infectious, 0.9999)
@@ -35,6 +57,11 @@ npi_t <- B1_reduction_in_transmission_among_contacts
 npi_c01 <- B2a_reduction_in_contacts_under_18
 npi_c02 <-B2b_reduction_in_contacts_18_65
 npi_c03 <- B2c_reduction_in_contacts_over_65
+
+npi_second_t <- C1_reduction_in_transmission_among_contacts
+npi_second_c01 <- C2a_reduction_in_contacts_under_18
+npi_second_c02 <-C2b_reduction_in_contacts_18_65
+npi_second_c03 <- C2c_reduction_in_contacts_over_65
 
 
 # Infection progression (IHR is the probability of going to the severe compartment I_H)
@@ -49,9 +76,6 @@ IHR01 <- IFR01 / HFR  # Infection Hospitalisation Rate for age group 01
 IHR02 <- IFR02 / HFR  # Infection Hospitalisation Rate for age group 02
 IHR03 <- IFR03 / HFR  # Infection Hospitalisation Rate for age group 03
 
-
-
-
 # Compartment-specific durations calculated from durations
 dur_E <- (1 - p_I_E) * A2_incubation_days # duration in E compartment
 dur_I_E <- A2_incubation_days - dur_E
@@ -62,6 +86,9 @@ dur_H <- 14  # duration in H compartment (hospitalized) - assume 2 weeks
 dur_T <- A5_symptomatic_days  # Duration in T compartment (tested)
 
 t_npi <- dur_I_E + dur_E + dur_I_H + B0_npi_delay_after_first_hospitalisation
+t_npi_stop <- t_npi + B0_first_npi_suration
+t_second_npi <- C0_second_npi_start
+t_second_npi_stop <- C0_second_npi_stop
 
 rate_E <- 1 / dur_E  # Rate out of non-infectious exposed compartment
 rate_I_E <- 1 / dur_I_E  # Rate out of presymptomatic infectious compartment
@@ -94,14 +121,14 @@ I_total <- I01 + I02 + I03
 
 
 # Apply NPIs based on the time
-npi_transmission01 <- if (t < t_npi) 1 else 1 - (npi_c01 + (1 - npi_c01) * npi_t)
-npi_transmission02 <- if (t < t_npi) 1 else 1 - (npi_c02 + (1 - npi_c02) * npi_t)
-npi_transmission03 <- if (t < t_npi) 1 else 1 - (npi_c03 + (1 - npi_c03) * npi_t)
-npi_symptoms <- if (t < t_npi) 1 else 1 - B3a_proportion_isolating_after_symptoms   # Reduction in infectiousness after symptoms
-npi_testing  <- if (t < t_npi) 1 else 1 - B3b_proportion_isolating_after_testing_positive   # Reduction in infectiousness after testing
+npi_transmission01 <- if (t > t_npi & t < t_npi_stop) 1 - (npi_c01 + (1 - npi_c01) * npi_t) else if (t > t_second_npi & t < t_second_stop) 1 - (npi_second_c01 + (1 - npi_second_c01) * npi_second_t) else 1
+npi_transmission02 <- if (t > t_npi & t < t_npi_stop) 1 - (npi_c02 + (1 - npi_c02) * npi_t) else if (t > t_second_npi & t < t_second_stop) 1 - (npi_second_c02 + (1 - npi_second_c02) * npi_second_t) else 1
+npi_transmission03 <- if (t > t_npi & t < t_npi_stop) 1 - (npi_c03 + (1 - npi_c03) * npi_t) else if (t > t_second_npi & t < t_second_stop) 1 - (npi_second_c03 + (1 - npi_second_c03) * npi_second_t) else 1
+npi_symptoms <- if (t > t_npi & t < t_npi_stop) 1 - B3a_proportion_isolating_after_symptoms else if (t > t_second_npi & t < t_second_stop) 1 - C3a_proportion_isolating_after_symptoms else 1
+npi_testing <- if (t > t_npi & t < t_npi_stop) 1 - B3b_proportion_isolating_after_symptoms else if (t > t_second_npi & t < t_second_stop) 1 - C3b_proportion_isolating_after_symptoms else 1
 
 # Importation inputs
-npi_importation <- if (t < t_npi) 1 else 1 - B4_reduction_in_importations # Reduction in importations after NPIs
+npi_importation <- if (t > t_npi & t < t_npi_stop) 1 - B4_reduction_in_importations else if (t > t_second_npi & t < t_second_stop) 1 - C4_reduction_in_importations else 1
 
 # Split the importation rate proportionally by population sizes
 importations01 <- npi_importation * A0_importations_per_day * (N01 / N)

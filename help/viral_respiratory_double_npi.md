@@ -1,4 +1,4 @@
-# **Modelling Multiple Non-Pharmaceutical Interventions for Viral Respiratory Pathogens**
+# **Modelling Non-Pharmaceutical Interventions for Viral Respiratory Pathogens**
 
 ## **Introduction**
 
@@ -67,8 +67,6 @@ The tool allows the user to explore the potential impact of NPIs and how effecti
 -   **B4. Reducing the importation of new cases:** This intervention reduces the number of infections brought into a community from outside, such as through travel restrictions or quarantine for people entering the country.
 
 The user can also specify the time at which NPIs are implemented, and how effective they are, and explore their potential impact for a range of disease profiles.
-
-In addition, users can control how long the NPI combination is in place for, as well as introduce a second period of NPIs at a later time with their own separate combination of NPIs. These are controlled with equivalently names parameters, starting with **C**.
 
 #### **3. NPI Effect Parameters**
 
